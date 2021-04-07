@@ -2,7 +2,7 @@
   "name": "PenguinsCleaning!",
   "short_name": "PenguinsCleaning!",
   "theme_color": "#000",
-  "background_color": "#000",
+  "background_color": "#f4f7fe",
   "display": "fullscreen",
   "scope": "/",
   "start_url": "/",

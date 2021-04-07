@@ -1,6 +1,4 @@
 export { TestappComponent } from "./testapp/testapp.component";
-export { FruitproductsComponent } from "./fruitproducts/fruitproducts.component";
-export { FruitbannerComponent } from "./fruitbanner/fruitbanner.component";
 export { MenuComponent } from "./menu/menu.component";
 export { HouseComponent } from "./house/house.component";
 export { OfficeComponent } from "./office/office.component";
@@ -12,12 +10,11 @@ export { CommercialthreeComponent } from "./commercialthree/commercialthree.comp
 export { CommercialfourComponent } from "./commercialfour/commercialfour.component";
 export { CommercialfiveComponent } from "./commercialfive/commercialfive.component";
 export { ContactComponent } from "./contact/contact.component";
+export { CarpetComponent } from "./carpet/carpet.component";
+export { CovidComponent } from "./covid/covid.component";
 // export { FruitbannerboxComponent } from "./fruitbannerbox/fruitbannerbox.component";
-export { FruitcestaComponent } from "./fruitcesta/fruitcesta.component";
-export { FruitfooterComponent } from "./fruitfooter/fruitfooter.component";
-export { FruittopbarComponent } from "./fruittopbar/fruittopbar.component";
+
 export { TopbarComponent } from "./topbar/topbar.component";
 export { FooterComponent } from "./footer/footer.component";
 export { CompanyComponent } from "./company/company.component";
-export { FruitcartComponent } from "./fruitcart/fruitcart.component";
 export { PagoComponent } from "./pago/pago.component";

@@ -14,6 +14,8 @@ import {
 	CommercialfourComponent,
 	CommercialfiveComponent,
 	ContactComponent,
+	CovidComponent,
+	CarpetComponent,
 	TopbarComponent,
 	PagoComponent
 
@@ -37,6 +39,8 @@ const app_routes: Routes = [
 	{path:'commercialfour',component:CommercialfourComponent},
 	{path:'commercialfive',component:CommercialfiveComponent},
 	{path:'contact',component:ContactComponent},
+	{path:'carpet',component:CarpetComponent},
+	{path:'covid',component:CovidComponent},
 	{path:'pago',component:PagoComponent},
 	{path:'**',pathMatch:'full',redirectTo:''}
 	];

@@ -57,6 +57,8 @@ import { CommercialtwoComponent } from './components/commercialtwo/commercialtwo
 import { CommercialthreeComponent } from './components/commercialthree/commercialthree.component';
 import { CommercialfourComponent } from './components/commercialfour/commercialfour.component';
 import { CommercialfiveComponent } from './components/commercialfive/commercialfive.component';
+import { CovidComponent } from './components/covid/covid.component';
+import { CarpetComponent } from './components/carpet/carpet.component';
 
 @NgModule({
   declarations: [
@@ -79,6 +81,8 @@ import { CommercialfiveComponent } from './components/commercialfive/commercialf
     CommercialthreeComponent,
     CommercialfourComponent,
     CommercialfiveComponent,
+    CovidComponent,
+    CarpetComponent,
   ],
   imports: [
     BrowserModule,
