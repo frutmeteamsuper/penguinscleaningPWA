@@ -12,6 +12,7 @@ export { CommercialfiveComponent } from "./commercialfive/commercialfive.compone
 export { ContactComponent } from "./contact/contact.component";
 export { CarpetComponent } from "./carpet/carpet.component";
 export { CovidComponent } from "./covid/covid.component";
+export { QuoteComponent } from "./quote/quote.component";
 // export { FruitbannerboxComponent } from "./fruitbannerbox/fruitbannerbox.component";
 
 export { TopbarComponent } from "./topbar/topbar.component";
