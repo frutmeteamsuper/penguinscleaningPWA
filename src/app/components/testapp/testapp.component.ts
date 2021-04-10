@@ -26,19 +26,19 @@ export class TestappComponent implements OnInit {
   url = "assets/assetspenguins/js/owl.js";
   url2 = "assets/assetspenguins/js/script.js";
      public tixs:TixInterface;
-  getAllTixsInitload(){
+/*  getAllTixsInitload(){
     this.dataApi
     .getAllTixsInitload()
     .subscribe((tixs: TixInterface) => (this.tixs=tixs));
-  }
-
+  }*/
+/*
   getAllTixs(){
     this.dataApi
     .getAllTixs()
     .subscribe((tixs: TixInterface) => (this.tixs=tixs));
   }
-
-   getTamano(){
+*/
+/*   getTamano(){
     this.dataApi
     .getTamano()
     .subscribe((res:any) => {
@@ -48,8 +48,8 @@ export class TestappComponent implements OnInit {
          this._uw.totalTixs = res.length;
         }
       });
-  }
-  getTamanoIni(){
+  }*/
+/*  getTamanoIni(){
     this.dataApi
     .getTamanoIni()
     .subscribe((res:any) => {
@@ -59,8 +59,8 @@ export class TestappComponent implements OnInit {
          this._uw.totalTixs = res.length;
         }
       });
-  }
-loadmore(){
+  }*/
+/*loadmore(){
   this.getAllTixs();
   this.getTamano();
      this.scrollTopService.setScrollTop();
@@ -69,7 +69,7 @@ loadmore(){
 }
 showAll(){
   this._uw.showAll=true;
-}
+}*/
 oncart(index){
    let id=index;
   this.tixs[id].oncart=true;
@@ -146,9 +146,9 @@ cartCalculate(){
     this._uw.loaded=true;
    
      // this.getAllTixsInitload();
-     this.getTamanoIni();
-     this.loadmore();
-     this._uw.categorySelected="hortalizas";
+     // this.getTamanoIni();
+     // this.loadmore();
+     // this._uw.categorySelected="hortalizas";
 
   }
 

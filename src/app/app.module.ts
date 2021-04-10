@@ -1,6 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { NgSelectModule } from '@ng-select/ng-select';
+
+
 import { HttpModule } from '@angular/http';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { ArchwizardModule } from 'angular-archwizard';
@@ -91,6 +95,7 @@ import { QuoteComponent } from './components/quote/quote.component';
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     HttpClientModule,
     FormsModule,
+    NgSelectModule,
     BrowserAnimationsModule,
     HttpModule,
     app_routing,

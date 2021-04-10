@@ -67,6 +67,12 @@ export class UserWService {
 	totalProducts:number=0;
 	totalTixs:number;
 	type:string;
+	typeOne:boolean=false;
+	typeTwo:boolean=false;
+	typeThree:boolean=false;
+	typeFour:boolean=false;
+	typeFive:boolean=false;
+	typeSix:boolean=false;
 	typeGlobal:boolean=false;
 	typeSize:boolean=false;
 	user:any={};
