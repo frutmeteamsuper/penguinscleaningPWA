@@ -140,8 +140,7 @@ export class QuoteComponent implements OnInit {
         this.selected=true;
       }      
   }
-okOrder()[
-]
+okOrder(){}
   setDays(parametro:number) {
 
         this.daysPerMonth=parametro+" Days per month" ;
