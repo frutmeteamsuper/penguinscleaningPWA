@@ -1,4 +1,5 @@
 export interface OrderInterface {
+	address:string;
 	car?:Array<string>;	
 	currency?:string;
 	email?:string;
@@ -7,8 +8,12 @@ export interface OrderInterface {
 	direccion?:string;
 	id?:string;
 	metodo?:string;
+	name?:string;
 	personaContacto?:string;
+	phone?:string;
 	status?:string;
+	subject?:string;
+	subjectA2U?:string;
 	telefono?:string;
 	serviceType?:string;
 	total?:number;

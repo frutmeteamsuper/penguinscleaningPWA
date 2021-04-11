@@ -124,7 +124,7 @@ export class QuoteComponent implements OnInit {
         this.houseSelected=false;
       }      
   }
-  okOrder(){}
+
   setSize(parametro){
     this.houseSize=parametro;
     this.order.daysPerMonth=parametro; 
@@ -138,9 +138,55 @@ export class QuoteComponent implements OnInit {
     this.order.hoursPerDay=parametro;
   }
 
+  public okOrder(){
+      this.submitted = true;
+        if (this.ngFormAddOrder.invalid) {
+          this._uw.errorFormSendOrder=true;
+        return;
+            } 
+      this._uw.errorFormSendOrder=false;
+      this.order = this.ngFormAddOrder.value;
+      this.order.status="new";
+
+      this.quoteId=this.aleatorio(10000,99999);
+      let quoteIdString = this.quoteId.toString();
+      this.order.quoteId=quoteIdString;
+      this.order.steeps=[
+        {steep:true},
+        {steep:false},
+        {steep:false},
+        {steep:false}
+      ];
+      // this.order.total=(this._uw.subTotal*this._uw.currency);
+      this.order.car=this._uw.car;
+      this._uw.order=this.order;
+      this._uw.order.subject="New Quote";
+      this._uw.order.subjectA2U="Your Quote is completed...";
+      this._uw.order.quoteId=this.order.quoteId;
+      this._uw.order.adminName="Jessica",
+      this._uw.order.amount=100,
+      this._uw.order.clientEmail=this._uw.order.email,
+      this._uw.order.email="frutmeteam@protonmail.com",
+      // this._uw.order.adminName=this._uw.info[0].adminName;
+      // this._uw.pedido.adminEmail=this._uw.info[0].adminEmail;
+      this.dataApi.sendMailNewQuoteA2A(this._uw.order).subscribe();
+      // this.dataApi.sendMailNewQuoteA2U(this._uw.order).subscribe();
+      console.log("enviando...");
+      this.dataApi.saveOrder(this._uw.order).subscribe(
+            tix => this.router.navigate(['/success'])
+        );
+    }
+
+
+
   ngOnInit() {
     this.ngFormAddOrder = this.formBuilder.group({
-      serviceType: ['', [Validators.required]]     });
+      serviceType: ['', [Validators.required]] ,
+      phone:['',[Validators.required]], 
+      email:['',[Validators.required]], 
+      address:['',[Validators.required]], 
+
+         });
     }
     
   get fval2() {

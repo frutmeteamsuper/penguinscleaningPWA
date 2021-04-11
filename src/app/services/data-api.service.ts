@@ -34,10 +34,16 @@ export class DataApiService {
 		.put<TixInterface>(url_api, tix)
 		.pipe(map(data => data));
 	}
-	sendMailNewQuote(book){
-		const url_api='https://email.penguinscleaning.ca:3005/newQuoteAppToAdmin';
+	sendMailNewQuoteA2A(order){
+		const url_api='https://email.penguinscleaning.ca:3005/newQuoteA2A';
 		return this.http
-		.post(url_api, book)
+		.post(url_api, order)
+		.pipe(map(data => data));
+	}
+	sendMailNewQuoteA2U(order){
+		const url_api='https://email.penguinscleaning.ca:3005/newQuoteA2U';
+		return this.http
+		.post(url_api, order)
 		.pipe(map(data => data));
 	}
 	getAllTixs(){

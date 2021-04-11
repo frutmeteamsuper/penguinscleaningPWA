@@ -64,6 +64,7 @@ import { CommercialfiveComponent } from './components/commercialfive/commercialf
 import { CovidComponent } from './components/covid/covid.component';
 import { CarpetComponent } from './components/carpet/carpet.component';
 import { QuoteComponent } from './components/quote/quote.component';
+import { SuccessComponent } from './components/success/success.component';
 
 @NgModule({
   declarations: [
@@ -89,6 +90,7 @@ import { QuoteComponent } from './components/quote/quote.component';
     CovidComponent,
     CarpetComponent,
     QuoteComponent,
+    SuccessComponent,
   ],
   imports: [
     BrowserModule,

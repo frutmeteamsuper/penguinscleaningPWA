@@ -29,17 +29,76 @@
                             </div>
                             <form  [formGroup]="ngFormAddOrder" (ngSubmit) ="okOrder()"  class="estimate-form">
                                 <div class="inner-box">
-                                    <div class="form-group">
-                                        <input type="text" name="text" placeholder="Your Name" required="">
+
+
+
+  <div class="º">
+                      <input  id="email" name="emailaddress" type="email"placeholder="Email" [(ngModel)]="order.email" class="form-control lgn_input" formControlName="email"
+              [ngClass]="{ 'is-invalid': submitted && fval.email.errors }"
+              required>
+                      <i class="uil uil-envelope lgn_icon"></i>
+              <span class="required"></span>
+              <div *ngIf="submitted && fval.email.errors" class="invalid-feedback">
+                  <div *ngIf="fval.email.errors.required" class="errorLabel">
+                  * Una dirección de correo electrónico para comunicarnos.
+                  </div>
+              </div>
+            </div>
+
+
+
+                                    <div class="form-group pos_rel">
+                                        <input type="text" name="name" placeholder="Your Name" [(ngModel)]="order.name" class="form-control lgn_input" formControlName="name"
+                                      [ngClass]="{ 'is-invalid': submitted && fval.name.errors }"
+                                      required>
+                                        <i class="uil uil-envelope lgn_icon"></i>
+                                        <span class="required"></span>
+                                        <div *ngIf="submitted && fval.name.errors" class="invalid-feedback">
+                                            <div *ngIf="fval.name.errors.required" class="errorLabel">
+                                            * Una dirección de correo electrónico para comunicarnos.
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <input type="email" name="email" placeholder="Email" required="">
+
+                                    <div class="form-group pos_rel">
+                                        <input type="email" name="email" placeholder="Your Email" [(ngModel)]="order.email" class="form-control lgn_input" formControlName="email"
+                                      [ngClass]="{ 'is-invalid': submitted && fval.email.errors }"
+                                      required>
+                                                                     <i class="uil uil-envelope lgn_icon"></i>
+                                      <span class="required"></span>
+                                      <div *ngIf="submitted && fval.email.errors" class="invalid-feedback">
+                                          <div *ngIf="fval.email.errors.required" class="errorLabel">
+                                          * Una dirección de correo electrónico para comunicarnos.
+                                          </div>
+                                      </div>
                                     </div>
-                                    <div class="form-group">
-                                        <input type="text" name="phone" placeholder="Phone" required="">
+                                    <div class="form-group pos_rel">
+                                        <input type="text" name="phone" placeholder="Your Phone" [(ngModel)]="order.phone" class="form-control lgn_input" formControlName="phone"
+                                      [ngClass]="{ 'is-invalid': submitted && fval.phone.errors }"
+                                      required>
+                                        <i class="uil uil-envelope lgn_icon"></i>
+                                        <span class="required"></span>
+                                        <div *ngIf="submitted && fval.phone.errors" class="invalid-feedback">
+                                            <div *ngIf="fval.phone.errors.required" class="errorLabel">
+                                            * Un numero telefonico para comunicarnos.
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group pos_rel">
                                         <input type="text" name="address" placeholder="Location (Full Address)" required="">
+                                    </div>
+
+                                    <div class="form-group pos_rel">
+                                        <input type="text" name="address" placeholder="Your Adddress" [(ngModel)]="order.address" class="form-control lgn_input" formControlName="address"
+                                      [ngClass]="{ 'is-invalid': submitted && fval.address.errors }"
+                                      required>
+                                        <i class="uil uil-envelope lgn_icon"></i>
+                                        <span class="required"></span>
+                                        <div *ngIf="submitted && fval.address.errors" class="invalid-feedback">
+                                            <div *ngIf="fval.address.errors.required" class="errorLabel">
+                                            * Un numero telefonico para comunicarnos.
+                                            </div>
+                                        </div>
                                     </div>
                                      <div class="dropdown">
                                         <button class="dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="  position: relative; display: inline-block;   font-size: 14px;  line-height: 24px;  font-weight: 600;  color: #0a267a;  text-transform: uppercase;  background: #ffffff;  padding: 16px 34px;  border-radius: 5px;  transition: all 500ms ease;  border: 0px solid #0a267a;  ">
@@ -65,7 +124,7 @@
                                             <a class="dropdown-item" (click)="setSize('Premium')"  style="cursor: pointer !important;">Premium</a>  
                                         </div>
                                     </div>
-                                    <div class="form-group" >
+                                    <div class="form-group pos_rel" >
                                         <div class="dropdown">
                                             <button class="dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="  position: relative; display: inline-block;   font-size: 14px;  line-height: 24px;  font-weight: 600;  color: #0a267a;  text-transform: uppercase;  background: #ffffff;  padding: 16px 34px;  border-radius: 5px;  transition: all 500ms ease;  border: 0px solid #0a267a;  ">
                                                 {{this.daysPerMonth}}
@@ -75,7 +134,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group pos_rel">
                                         <div class="dropdown">
                                             <button class="dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="  position: relative; display: inline-block;   font-size: 14px;  line-height: 24px;  font-weight: 600;  color: #0a267a;  text-transform: uppercase;  background: #ffffff;  padding: 16px 34px;  border-radius: 5px;  transition: all 500ms ease;  border: 0px solid #0a267a;  ">
                                                 {{this.hoursPerDay}} 
