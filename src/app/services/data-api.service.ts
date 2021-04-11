@@ -34,6 +34,12 @@ export class DataApiService {
 		.put<TixInterface>(url_api, tix)
 		.pipe(map(data => data));
 	}
+	sendMailNewQuote(book){
+		const url_api='https://email.penguinscleaning.ca:3005/newQuoteAppToAdmin';
+		return this.http
+		.post(url_api, book)
+		.pipe(map(data => data));
+	}
 	getAllTixs(){
 		const url_api = 'https://db.buckapi.com:3025/api/tixes?filter[where][status]=activated';
 		return this.http.get(url_api);
