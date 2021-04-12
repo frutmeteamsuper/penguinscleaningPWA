@@ -11,6 +11,7 @@ export interface OrderInterface {
 	name?:string;
 	personaContacto?:string;
 	phone?:string;
+	quoteId?:string;
 	status?:string;
 	subject?:string;
 	subjectA2U?:string;
