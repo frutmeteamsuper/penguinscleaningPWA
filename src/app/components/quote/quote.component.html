@@ -37,7 +37,7 @@
 
 
                                     <div class="form-group pos_rel">
-                                        <input type="text" name="name" placeholder="Your Name" [(ngModel)]="order.name" class="form-control lgn_input" formControlName="name"
+                                        <input type="text" name="name" placeholder="Your Name" [(ngModel)]="order.name" class="form-control " formControlName="name"
                                       [ngClass]="{ 'is-invalid': submitted && fval2.name.errors }"
                                       required>
                                         <i class="uil uil-envelope lgn_icon"></i>
@@ -50,7 +50,7 @@
                                     </div>
 
                                     <div class="form-group pos_rel">
-                                        <input type="email" name="email" placeholder="Your Email" [(ngModel)]="order.email" class="form-control lgn_input" formControlName="email"
+                                        <input type="email" name="email" placeholder="Your Email" [(ngModel)]="order.email" class="form-control " formControlName="email"
                                       [ngClass]="{ 'is-invalid': submitted && fval2.email.errors }"
                                       required>
                                                                      <i class="uil uil-envelope lgn_icon"></i>
@@ -62,7 +62,7 @@
                                       </div>
                                     </div>
                                     <div class="form-group pos_rel">
-                                        <input type="text" name="phone" placeholder="Your Phone" [(ngModel)]="order.phone" class="form-control lgn_input" formControlName="phone"
+                                        <input type="text" name="phone" placeholder="Your Phone" [(ngModel)]="order.phone" class="form-control " formControlName="phone"
                                       [ngClass]="{ 'is-invalid': submitted && fval2.phone.errors }"
                                       required>
                                         <i class="uil uil-envelope lgn_icon"></i>
@@ -73,12 +73,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group pos_rel">
-                                        <input type="text" name="address" placeholder="Location (Full Address)" required="">
-                                    </div>
+                                 
 
                                     <div class="form-group pos_rel">
-                                        <input type="text" name="address" placeholder="Your Adddress" [(ngModel)]="order.address" class="form-control lgn_input" formControlName="address"
+                                        <input type="text" name="address" placeholder="Your Adddress" [(ngModel)]="order.address" class="form-control " formControlName="address"
                                       [ngClass]="{ 'is-invalid': submitted && fval2.address.errors }"
                                       required>
                                         <i class="uil uil-envelope lgn_icon"></i>
