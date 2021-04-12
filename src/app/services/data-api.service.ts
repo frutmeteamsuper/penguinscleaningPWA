@@ -35,13 +35,13 @@ export class DataApiService {
 		.pipe(map(data => data));
 	}
 	sendMailNewQuoteA2A(order){
-		const url_api='https://email.penguinscleaning.ca:3005/newQuoteA2A';
+		const url_api='https://email.penguinscleaning.ca:3005/newQuoteAA';
 		return this.http
 		.post(url_api, order)
 		.pipe(map(data => data));
 	}
 	sendMailNewQuoteA2U(order){
-		const url_api='https://email.penguinscleaning.ca:3005/newQuoteA2U';
+		const url_api='https://email.penguinscleaning.ca:3005/newQuoteAU';
 		return this.http
 		.post(url_api, order)
 		.pipe(map(data => data));
