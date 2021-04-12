@@ -168,18 +168,25 @@ export class QuoteComponent implements OnInit {
       ];
       // this.order.total=(this._uw.subTotal*this._uw.currency);
       this.order.car=this._uw.car;
-      this._uw.order=this.order;
+      this._uw.order.name=this.order.name;
+      this._uw.order.phone=this.order.phone;
+      this._uw.order.address=this.order.address;
+      this._uw.order.email=this.order.email;
       this._uw.order.subject="New Quote";
-      console.log("uw order hoursPerDay" +this._uw.order.hoursPerDay);
       this._uw.order.subjectA2U="Your Quote is completed...";
       this._uw.order.quoteId=this.order.quoteId;
       this._uw.order.adminName="Jessica",
       this._uw.order.amount=100,
       this._uw.order.clientEmail=this._uw.order.email,
       this._uw.order.email="frutmeteam@protonmail.com",
+      console.log("uw order hoursPerDay" +this._uw.order.hoursPerDay);
       // this._uw.order.adminName=this._uw.info[0].adminName;
       // this._uw.pedido.adminEmail=this._uw.info[0].adminEmail;
+
+
       this.dataApiService.sendMailNewQuoteAA(this._uw.order).subscribe();
+      
+
       // this.dataApi.sendMailNewQuoteA2U(this._uw.order).subscribe();
       console.log("enviando...");
       this.dataApiService.saveOrder(this._uw.order).subscribe(
