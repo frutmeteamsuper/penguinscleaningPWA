@@ -169,10 +169,10 @@ export class QuoteComponent implements OnInit {
       this._uw.order.email="frutmeteam@protonmail.com",
       // this._uw.order.adminName=this._uw.info[0].adminName;
       // this._uw.pedido.adminEmail=this._uw.info[0].adminEmail;
-      this.dataApi.sendMailNewQuoteA2A(this._uw.order).subscribe();
+      this.dataApiService.sendMailNewQuoteA2A(this._uw.order).subscribe();
       // this.dataApi.sendMailNewQuoteA2U(this._uw.order).subscribe();
       console.log("enviando...");
-      this.dataApi.saveOrder(this._uw.order).subscribe(
+      this.dataApiService.saveOrder(this._uw.order).subscribe(
             tix => this.router.navigate(['/success'])
         );
     }
@@ -181,7 +181,7 @@ export class QuoteComponent implements OnInit {
 
   ngOnInit() {
     this.ngFormAddOrder = this.formBuilder.group({
-      serviceType: ['', [Validators.required]] ,
+      name: ['', [Validators.required]] ,
       phone:['',[Validators.required]], 
       email:['',[Validators.required]], 
       address:['',[Validators.required]], 
