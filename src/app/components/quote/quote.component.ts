@@ -82,6 +82,7 @@ export class QuoteComponent implements OnInit {
     email:"",
     clientEmail:"",
     quoteId:"",
+    quoteIdPre:0,
     daysPerMonth:0,
     hoursPerDay:0
   };
@@ -156,8 +157,8 @@ export class QuoteComponent implements OnInit {
       this.order = this.ngFormAddOrder.value;
       this.order.status="new";
 
-      this.quoteId=this.aleatorio(10000,99999);
-      let quoteIdString = this.quoteId.toString();
+      this.order.quoteIdPre=this.aleatorio(10000,99999);
+      let quoteIdString = this.order.quoteIdPre.toString();
       this.order.quoteId=quoteIdString;
       this.order.steeps=[
         {steep:true},

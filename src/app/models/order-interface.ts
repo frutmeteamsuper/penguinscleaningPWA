@@ -13,6 +13,7 @@ export interface OrderInterface {
 	personaContacto?:string;
 	phone?:string;
 	quoteId?:string;
+	quoteIdPre?:number;
 	status?:string;
 	subject?:string;
 	subjectA2U?:string;
