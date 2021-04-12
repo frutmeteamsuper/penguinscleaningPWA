@@ -170,6 +170,7 @@ export class QuoteComponent implements OnInit {
       this.order.car=this._uw.car;
       this._uw.order=this.order;
       this._uw.order.subject="New Quote";
+      console.log("uw order hoursPerDay" +this._uw.order.hoursPerDay);
       this._uw.order.subjectA2U="Your Quote is completed...";
       this._uw.order.quoteId=this.order.quoteId;
       this._uw.order.adminName="Jessica",
