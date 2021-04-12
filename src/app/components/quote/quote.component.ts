@@ -143,7 +143,9 @@ export class QuoteComponent implements OnInit {
     this.hoursPerDay=parametro+" Hours per day" ;
     this.order.hoursPerDay=parametro;
   }
-
+ public aleatorio(a,b) {
+    return Math.round(Math.random()*(b-a)+parseInt(a));
+  }
   public okOrder(){
       this.submitted = true;
         if (this.ngFormAddOrder.invalid) {

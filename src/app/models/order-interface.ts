@@ -3,6 +3,7 @@ export interface OrderInterface {
 	car?:Array<string>;	
 	currency?:string;
 	email?:string;
+	clientEmail?:string;
 	daysPerMonth?:number;
 	hoursPerDay?:number;
 	direccion?:string;
