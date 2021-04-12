@@ -178,7 +178,7 @@ export class QuoteComponent implements OnInit {
       this._uw.order.email="frutmeteam@protonmail.com",
       // this._uw.order.adminName=this._uw.info[0].adminName;
       // this._uw.pedido.adminEmail=this._uw.info[0].adminEmail;
-      this.dataApiService.sendMailNewQuoteA2A(this._uw.order).subscribe();
+      this.dataApiService.sendMailNewQuoteAA(this._uw.order).subscribe();
       // this.dataApi.sendMailNewQuoteA2U(this._uw.order).subscribe();
       console.log("enviando...");
       this.dataApiService.saveOrder(this._uw.order).subscribe(
