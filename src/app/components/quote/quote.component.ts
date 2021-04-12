@@ -172,7 +172,7 @@ export class QuoteComponent implements OnInit {
       this._uw.order.phone=this.order.phone;
       this._uw.order.address=this.order.address;
       this._uw.order.email=this.order.email;
-      this._uw.order.subject="New Quote";
+      this._uw.order.subject="You have a new quote request";
       this._uw.order.subjectA2U="Your Quote is completed...";
       this._uw.order.quoteId=this.order.quoteId;
       this._uw.order.adminName="Jessica",
