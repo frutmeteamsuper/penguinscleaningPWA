@@ -34,13 +34,13 @@ export class DataApiService {
 		.put<TixInterface>(url_api, tix)
 		.pipe(map(data => data));
 	}
-	sendMailNewQuoteA2A(order){
+	sendMailNewQuoteAA(order){
 		const url_api='https://email.penguinscleaning.ca:3005/newQuoteAA';
 		return this.http
 		.post(url_api, order)
 		.pipe(map(data => data));
 	}
-	sendMailNewQuoteA2U(order){
+	sendMailNewQuoteAU(order){
 		const url_api='https://email.penguinscleaning.ca:3005/newQuoteAU';
 		return this.http
 		.post(url_api, order)
