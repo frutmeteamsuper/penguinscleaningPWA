@@ -76,6 +76,12 @@ export class QuoteComponent implements OnInit {
   public images:any[]=[];
   public order : OrderInterface ={
     serviceType:"",
+    address:"",
+    subject:"",
+    subjectA2U:"",
+    email:"",
+    clientEmail:"",
+    quoteId:"",
     daysPerMonth:0,
     hoursPerDay:0
   };
