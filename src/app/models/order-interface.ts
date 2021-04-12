@@ -6,6 +6,8 @@ export interface OrderInterface {
 	clientEmail?:string;
 	daysPerMonth?:number;
 	hoursPerDay?:number;
+	houseSize?:number;
+	
 	direccion?:string;
 	id?:string;
 	metodo?:string;

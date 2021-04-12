@@ -90,43 +90,43 @@ export class QuoteComponent implements OnInit {
   setType(parametro:string){
       if(parametro=='Houses'){
         this.serviceSelected=parametro;
-        this.order.serviceType="Houses";
+        this._uw.order.serviceType="Houses";
         this.selected=true;
         this.houseSelected=true;
       }  
       if(parametro=='Hotel, Motel, Chalets, Airbnb.'){
         this.serviceSelected=parametro;
-        this.order.serviceType="Hotel, Motel, Chalets, Airbnb.";
+        this._uw.order.serviceType="Hotel, Motel, Chalets, Airbnb.";
         this.selected=true;
         this.houseSelected=false;
       }  
       if(parametro=='Commercial offices: Government, Bank, Medical, Others.'){
         this.serviceSelected="Commercial offices: Government, Bank, Medical...";
-        this.order.serviceType="Commercial offices: Government, Bank, Medical, Others.";
+        this._uw.order.serviceType="Commercial offices: Government, Bank, Medical, Others.";
         this.selected=true;
         this.houseSelected=false;
       } 
       if(parametro=='Events, Before event, After event.'){
         this.serviceSelected=parametro;
-        this.order.serviceType="Events, Before event, After event.";
+        this._uw.order.serviceType="Events, Before event, After event.";
         this.selected=true;
         this.houseSelected=false;
       }
       if(parametro=='Gym, Post-construction, Daycares, Restaurant and bar.'){
         this.serviceSelected="Gym, Post-construction, Daycares, Restaurant ...";
-        this.order.serviceType="Gym, Post-construction, Daycares, Restaurant and bar.";
+        this._uw.order.serviceType="Gym, Post-construction, Daycares, Restaurant and bar.";
         this.selected=true;
         this.houseSelected=false;
       }
       if(parametro=='Commercial spaces cleaning.'){
         this.serviceSelected=parametro;
-        this.order.serviceType="Commercial spaces cleaning.";
+        this._uw.order.serviceType="Commercial spaces cleaning.";
         this.selected=true;
         this.houseSelected=false;
       }
       if(parametro=='Health and medic centers.'){
         this.serviceSelected=parametro;
-        this.order.serviceType="Health and medic centers.";
+        this._uw.order.serviceType="Health and medic centers.";
         this.selected=true;
         this.houseSelected=false;
       }      
@@ -134,15 +134,15 @@ export class QuoteComponent implements OnInit {
 
   setSize(parametro){
     this.houseSize=parametro;
-    this.order.daysPerMonth=parametro; 
+    this._uw.order.houseSize=parametro; 
   }
   setDays(parametro:number) {
     this.daysPerMonth=parametro+" Days per month" ;
-    this.order.daysPerMonth=parametro;     
+    this._uw.order.daysPerMonth=parametro;     
   }
   setHours(parametro:number){
     this.hoursPerDay=parametro+" Hours per day" ;
-    this.order.hoursPerDay=parametro;
+    this._uw.order.hoursPerDay=parametro;
   }
  public aleatorio(a,b) {
     return Math.round(Math.random()*(b-a)+parseInt(a));
