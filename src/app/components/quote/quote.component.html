@@ -114,7 +114,7 @@
                                     </div>
 
 
-                                    <div class="form-group pos_rel" [hidden]="!subserviceSelected" >
+                                    <div class="form-group pos_rel" [hidden]="!subserviceSelected || houseSelected">
                                            
                                         <div class="dropdown" >
                                             <button class="dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="  position: relative; display: inline-block;   font-size: 14px;  line-height: 24px;  font-weight: 600;  color: #0a267a;  text-transform: uppercase;  background: #ffffff;  padding: 16px 34px;  border-radius: 5px;  transition: all 500ms ease;  border: 0px solid #0a267a;  ">
@@ -127,7 +127,7 @@
                                     </div>
 
 
-                                    <div class="form-group pos_rel" >
+                                    <div class="form-group pos_rel"  [hidden]="houseSelected" >
                                            
                                         <div class="dropdown">
                                             <button class="dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="  position: relative; display: inline-block;   font-size: 14px;  line-height: 24px;  font-weight: 600;  color: #0a267a;  text-transform: uppercase;  background: #ffffff;  padding: 16px 34px;  border-radius: 5px;  transition: all 500ms ease;  border: 0px solid #0a267a;  ">
@@ -138,7 +138,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group pos_rel">
+                                    <div class="form-group pos_rel" [hidden]="houseSelected" >
                                       
                                         <div class="dropdown">
                                             <button class="dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="  position: relative; display: inline-block;   font-size: 14px;  line-height: 24px;  font-weight: 600;  color: #0a267a;  text-transform: uppercase;  background: #ffffff;  padding: 16px 34px;  border-radius: 5px;  transition: all 500ms ease;  border: 0px solid #0a267a;  ">
@@ -150,7 +150,7 @@
                                         </div>
                                     </div>
 
-                                       <div class="form-group pos_rel">
+                                    <div class="form-group pos_rel" [hidden]="houseSelected" >
                                              
                                         <div class="dropdown">
                                             <button class="dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="  position: relative; display: inline-block;   font-size: 14px;  line-height: 24px;  font-weight: 600;  color: #0a267a;  text-transform: uppercase;  background: #ffffff;  padding: 16px 34px;  border-radius: 5px;  transition: all 500ms ease;  border: 0px solid #0a267a;  ">
@@ -161,8 +161,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="message-btn" [hidden]="submitted">
+                                    <div class="message-btn" [hidden]="submitted || houseSelected" >
                                         <button type="submit">Get a quote</button>
+                                    </div>
+                                      <div class="message-btn" [hidden]="submitted || !houseSelected" >
+                                        <button type="submit">Get an appointment
+</button>
                                     </div>
                                 </div>
                             </form>
