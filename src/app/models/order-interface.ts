@@ -7,7 +7,7 @@ export interface OrderInterface {
 	daysPerMonth?:number;
 	hoursPerDay?:number;
 	houseSize?:number;
-	
+	ncleaners?:number;
 	direccion?:string;
 	id?:string;
 	metodo?:string;

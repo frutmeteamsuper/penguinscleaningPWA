@@ -27,8 +27,15 @@ export class QuoteComponent implements OnInit {
   ]; 
 
   hours: number[]=[
+    1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,1,22,23,24
+  ]; 
+
+  cleaners: number[]=[
     1,2,3,4,5
   ]; 
+
+
+  subservices = [];
 
   serviceOptions = [
     'Houses',
@@ -36,18 +43,18 @@ export class QuoteComponent implements OnInit {
     'Commercial offices: Government, Bank, Medical, Others.',
     'Events, Before event, After event.',
     'Gym, Post-construction, Daycares, Restaurant and bar.',
-    'Commercial spaces cleaning',
-    'Health and medic centers'
+    'Commercial spaces cleaning.',
+    'Health and medic centers.'
     ];
 
   serviceOptions2 = [
-      { id: 1, name: 'Houses' },
-      { id: 2, name: 'Hotel, Motel, Chalets, Airbnb.' },
-      { id: 3, name: 'Commercial offices: Government, Bank, Medical, Others.' },
-      { id: 4, name: 'Events, Before event, After event.' },
-      { id: 5, name: 'Gym, Post-construction, Daycares, Restaurant and bar.' },
-      { id: 6, name: 'Commercial spaces cleaning.' },
-      { id: 7, name: 'Health and medic centers.' },
+      { serviceCost: 0, id: 1, name: 'Houses' },
+      { serviceCost: 35, id: 2, name: 'Hotel, Motel, Chalets, Airbnb.' },
+      { serviceCost: 30, id: 3, name: 'Commercial offices: Government, Bank, Medical...' },
+      { serviceCost: 30, id: 4, name: 'Events, Before event, After event.' },
+      { serviceCost: 35, id: 5, name: 'Gym, Post-construction, Daycares, Restaurant ...' },
+      { serviceCost: 30, id: 6, name: 'Commercial spaces cleaning.' },
+      { serviceCost: 40, id: 7, name: 'Health and medic centers.' },
   ];
 
   constructor(
@@ -64,11 +71,21 @@ export class QuoteComponent implements OnInit {
   submitted = false;
   houseSelected=false;
   selected = false;
+  subserviceSelected = false;
   serviceSelected="Service Type";
-  houseSize="House Size";
+  houseSize="Select size";
+  subservice="Select one";
   daysPerMonth:any="Days per month";
   hoursPerDay:any="Hours per day";
-  numberOfCleaners="Number of cleaners";
+  msDays:any="";
+  msProperty:any="Property or Space: ";
+  mshours:any="";
+  mscleaners:any="";
+  ncleaners:any="Cleaners";
+  perDayamount= 0;
+  perHour=0;
+  perCleaner=0;
+
 
   public isError = false;
   public orders:OrderInterface;
@@ -82,67 +99,143 @@ export class QuoteComponent implements OnInit {
     email:"",
     clientEmail:"",
     quoteId:"",
-    quoteIdPre:0,
-    daysPerMonth:0,
-    hoursPerDay:0
+    quoteIdPre:1,
+    daysPerMonth:1,
+    hoursPerDay:1,
+    ncleaners:1
   };
 
-  setType(parametro:string){
-      if(parametro=='Houses'){
-        this.serviceSelected=parametro;
+calculate(index){
+  this._uw.order.amount=this.serviceOptions2[index].serviceCost*this.daysPerMonth*this.hoursPerDay*this.ncleaners;
+}
+
+  setType(item,index){
+      if(item.name=='Houses'){
+        this.serviceSelected=item.name;
         this._uw.order.serviceType="Houses";
+        this._uw.order.serviceSelectedId=index;
         this.selected=true;
         this.houseSelected=true;
+        this.msProperty="Property or Space: ";
+        this.subserviceSelected=false
+         
       }  
-      if(parametro=='Hotel, Motel, Chalets, Airbnb.'){
-        this.serviceSelected=parametro;
+      if(item.name=='Hotel, Motel, Chalets, Airbnb.'){
+        this.serviceSelected=item.name; 
         this._uw.order.serviceType="Hotel, Motel, Chalets, Airbnb.";
         this.selected=true;
         this.houseSelected=false;
+        this._uw.order.serviceSelectedId=index;
+        this.msProperty="Property or Space: ";
+         this.subservices = [
+            "Airbnb",
+            "Chalet",
+            "Hotel",
+            "Motel"
+          ];
+          this.subserviceSelected=true;
+          this.subservice="Select one";
       }  
-      if(parametro=='Commercial offices: Government, Bank, Medical, Others.'){
+      if(item.name=='Commercial offices: Government, Bank, Medical...'){
         this.serviceSelected="Commercial offices: Government, Bank, Medical...";
         this._uw.order.serviceType="Commercial offices: Government, Bank, Medical, Others.";
         this.selected=true;
         this.houseSelected=false;
+        this._uw.order.serviceSelectedId=index;
+        this.msProperty="Property or Space: ";
+         this.subservices = [
+            "Government office",
+            "Bank office",
+            "Medical office",
+          ];
+          this.subserviceSelected=true;
+          this.subservice="Select one";
       } 
-      if(parametro=='Events, Before event, After event.'){
-        this.serviceSelected=parametro;
+      if(item.name=='Events, Before event, After event.'){
+        this.serviceSelected=item.name;
         this._uw.order.serviceType="Events, Before event, After event.";
         this.selected=true;
         this.houseSelected=false;
+        this._uw.order.serviceSelectedId=index;
+        this.msProperty="Property or Space: ";
+         this.subservices = [
+            "Before",
+            "Durring",
+            "After"
+          ];
+          this.subserviceSelected=true;
+          this.subservice="Select one";
       }
-      if(parametro=='Gym, Post-construction, Daycares, Restaurant and bar.'){
+      if(item.name=='Gym, Post-construction, Daycares, Restaurant ...'){
         this.serviceSelected="Gym, Post-construction, Daycares, Restaurant ...";
         this._uw.order.serviceType="Gym, Post-construction, Daycares, Restaurant and bar.";
         this.selected=true;
         this.houseSelected=false;
+        this._uw.order.serviceSelectedId=index;
+        this.msProperty="Property or Space: ";
+         this.subservices = [
+            "Gym",
+            "Post-construction",
+            "Daycares",
+            "Restaurant and bar"
+          ];
+          this.subserviceSelected=true;
+          this.subservice="Select one";
       }
-      if(parametro=='Commercial spaces cleaning.'){
-        this.serviceSelected=parametro;
+      if(item.name=='Commercial spaces cleaning.'){
+        this.serviceSelected=item.name;
         this._uw.order.serviceType="Commercial spaces cleaning.";
         this.selected=true;
         this.houseSelected=false;
+        this._uw.order.serviceSelectedId=index;
+        this.subserviceSelected=true;
+        this.subservice="Select one";
       }
-      if(parametro=='Health and medic centers.'){
-        this.serviceSelected=parametro;
+      if(item.name=='Health and medic centers.'){
+        this.serviceSelected=item.name;
         this._uw.order.serviceType="Health and medic centers.";
         this.selected=true;
         this.houseSelected=false;
+        this._uw.order.serviceSelectedId=index;
+        this.msProperty="Property or Space: ";
+        this.subserviceSelected=true;
+        this.subservice="Select one";
       }      
+        this.calculate(index);
   }
-
+  recalcular(){
+    this._uw.order.amount=this.serviceOptions2[this._uw.order.serviceSelectedId].serviceCost*this.daysPerMonth*this.hoursPerDay*this.ncleaners;
+  }
+  setSubservice(parametro){
+    this._uw.order.subService=parametro;
+    this.subservice=parametro;
+  }
   setSize(parametro){
     this.houseSize=parametro;
     this._uw.order.houseSize=parametro; 
+    if (parametro=="Basic"){this.serviceOptions2[0].serviceCost=99,99;}
+    if (parametro=="Medium"){this.serviceOptions2[0].serviceCost=149,99;}
+    if (parametro=="Premium"){this.serviceOptions2[0].serviceCost=199,99;}
+    this.calculate(0);
   }
   setDays(parametro:number) {
-    this.daysPerMonth=parametro+" Days per month" ;
-    this._uw.order.daysPerMonth=parametro;     
+    this.daysPerMonth=parametro+" Days per month: " ;
+    this._uw.order.daysPerMonth=parametro;
+    this.daysPerMonth=parametro;
+    this.msDays="Days per month";
+    this.recalcular();
   }
   setHours(parametro:number){
-    this.hoursPerDay=parametro+" Hours per day" ;
+    this.mshours="Hours per day";
+    this.hoursPerDay=parametro+" Hours per day: " ;
     this._uw.order.hoursPerDay=parametro;
+    this.hoursPerDay=parametro;
+    this.recalcular();
+  }
+  setCleaners(parametro:number){
+    this.ncleaners=parametro;
+    this.recalcular();
+    this.mscleaners="Nro of cleaners: ";
   }
  public aleatorio(a,b) {
     return Math.round(Math.random()*(b-a)+parseInt(a));
@@ -173,24 +266,25 @@ export class QuoteComponent implements OnInit {
       this._uw.order.address=this.order.address;
       this._uw.order.email=this.order.email;
       this._uw.order.subject="You have a new quote request";
-      this._uw.order.subjectA2U="Your Quote is completed...";
+      this._uw.order.subjectA2U="The result of your quote is";
       this._uw.order.quoteId=this.order.quoteId;
       this._uw.order.adminName="Jessica",
-      this._uw.order.amount=100,
+      // this._uw.order.amount=100,
       this._uw.order.clientEmail=this._uw.order.email,
       this._uw.order.email="frutmeteam@protonmail.com",
+      // this._uw.order.email="penguinscleaningservice@gmail.com",
       // console.log("uw order hoursPerDay" +this._uw.order.hoursPerDay);
       // this._uw.order.adminName=this._uw.info[0].adminName;
       // this._uw.pedido.adminEmail=this._uw.info[0].adminEmail;
 
 
-      this.dataApiService.sendMailNewQuoteAA(this._uw.order).subscribe();
-      
+/*      this.dataApiService.sendMailNewQuoteAA(this._uw.order).subscribe();
+      this.dataApiService.sendMailNewQuoteAU(this._uw.order).subscribe();
+      */
 
       // this.dataApi.sendMailNewQuoteA2U(this._uw.order).subscribe();
       // console.log("enviando...");
       this.dataApiService.saveOrder(this._uw.order).subscribe(
-            tix => this.router.navigate(['/success'])
         );
     }
 

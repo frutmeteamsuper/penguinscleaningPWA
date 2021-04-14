@@ -23,9 +23,13 @@
                     <div class="content_block_6">
                       <div class="content-box">
                             <div class="bg-layer" style="background-image: url(assets/assetspenguins/images/shape/shape-4.png);"></div>
-                            <div class="sec-title text-left">
+                            <div class="sec-title text-left"  [hidden]="submitted">
                                 <h6>Cost Calculator</h6>
                                 <h2>Get a Free Estimation</h2>
+                            </div>
+                             <div class="sec-title text-left" [hidden]="!submitted">
+                                <h6>Your Quote Estimation Amount is:</h6>
+                                <h2> {{_uw.order.amount }} $USD </h2>
                             </div>
                             <form  [formGroup]="ngFormAddOrder" (ngSubmit) ="okOrder()"  class="estimate-form">
                                 <div class="inner-box">
@@ -46,7 +50,7 @@
                                         <input type="email" name="email" placeholder="Your Email" [(ngModel)]="order.email"  formControlName="email"
                                       [ngClass]="{ 'is-invalid': submitted && fval2.email.errors }"
                                       required>
-                                                                     <i class="uil uil-envelope lgn_icon"></i>
+                                    <i class="uil uil-envelope lgn_icon"></i>
                                       <span class="required"></span>
                                       <div *ngIf="submitted && fval2.email.errors" class="invalid-feedback">
                                           <div *ngIf="fval2.email.errors.required" class="errorLabel">
@@ -80,55 +84,89 @@
                                             </div>
                                         </div>
                                     </div>
-                                     <div class="dropdown">
-                                        <button class="dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="  position: relative; display: inline-block;   font-size: 14px;  line-height: 24px;  font-weight: 600;  color: #0a267a;  text-transform: uppercase;  background: #ffffff;  padding: 16px 34px;  border-radius: 5px;  transition: all 500ms ease;  border: 0px solid #0a267a;  ">
-                                            {{this.serviceSelected}}
-                                        </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" (click)="setType('Houses')"  style="cursor: pointer !important;">Houses</a>
-                                            <a class="dropdown-item" (click)="setType('Hotel, Motel, Chalets, Airbnb.')"  style="cursor: pointer !important;">Hotel, Motel, Chalets, Airbnb.</a>  
-                                            <a class="dropdown-item" (click)="setType('Commercial offices: Government, Bank, Medical, Others.')"  style="cursor: pointer !important;">Commercial offices: Government, Bank, Medical, Others.</a>  
-                                            <a class="dropdown-item" (click)="setType('Events, Before event, After event.')"  style="cursor: pointer !important;">Events, Before event, After event.</a>  
-                                            <a class="dropdown-item" (click)="setType('Gym, Post-construction, Daycares, Restaurant and bar.')"  style="cursor: pointer !important;">Gym, Post-construction, Daycares, Restaurant and bar.</a>  
-                                            <a class="dropdown-item" (click)="setType('Commercial spaces cleaning.')"  style="cursor: pointer !important;">Commercial spaces cleaning.</a>  
-                                            <a class="dropdown-item" (click)="setType('Health and medic centers.')"  style="cursor: pointer !important;">Health and medic centers.</a>  
-                                        </div>
-                                    </div>
-                                    <div class="dropdown" [hidden]="!houseSelected">
-                                        <button class="dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="  position: relative; display: inline-block;   font-size: 14px;  line-height: 24px;  font-weight: 600;  color: #0a267a;  text-transform: uppercase;  background: #ffffff;  padding: 16px 34px;  border-radius: 5px;  transition: all 500ms ease;  border: 0px solid #0a267a;  ">
-                                            {{this.houseSize}}
-                                        </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" (click)="setSize('Basic')"  style="cursor: pointer !important;">Basic</a>
-                                            <a class="dropdown-item" (click)="setSize('Medium')"  style="cursor: pointer !important;">Medium</a>  
-                                            <a class="dropdown-item" (click)="setSize('Premium')"  style="cursor: pointer !important;">Premium</a>  
-                                        </div>
-                                    </div>
+                                    
+
                                     <div class="form-group pos_rel" >
+
+                                            
                                         <div class="dropdown">
                                             <button class="dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="  position: relative; display: inline-block;   font-size: 14px;  line-height: 24px;  font-weight: 600;  color: #0a267a;  text-transform: uppercase;  background: #ffffff;  padding: 16px 34px;  border-radius: 5px;  transition: all 500ms ease;  border: 0px solid #0a267a;  ">
-                                                {{this.daysPerMonth}}
+                                                {{this.serviceSelected}}
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <a class="dropdown-item" *ngFor="let item of days" (click)="setDays(item)"  style="cursor: pointer !important;">{{item}}</a>
+                                                <a class="dropdown-item" *ngFor="let item  of serviceOptions2;let i = index" (click)="setType(item,i)"  style="cursor: pointer !important;">{{item.name}}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group pos_rel" [hidden]="!houseSelected">
+                                      
+                                        <div class="dropdown" >
+                                            <button class="dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="  position: relative; display: inline-block;   font-size: 14px;  line-height: 24px;  font-weight: 600;  color: #0a267a;  text-transform: uppercase;  background: #ffffff;  padding: 16px 34px;  border-radius: 5px;  transition: all 500ms ease;  border: 0px solid #0a267a;  ">
+                                                Size: {{this.houseSize}}
+                                            </button>   
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <a class="dropdown-item" (click)="setSize('Basic')"  style="cursor: pointer !important;"> Basic</a>
+                                                <a class="dropdown-item" (click)="setSize('Medium')"  style="cursor: pointer !important;"> Medium</a>  
+                                                <a class="dropdown-item" (click)="setSize('Premium')"  style="cursor: pointer !important;">Premium</a>  
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group pos_rel" [hidden]="!subserviceSelected" >
+                                           
+                                        <div class="dropdown" >
+                                            <button class="dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="  position: relative; display: inline-block;   font-size: 14px;  line-height: 24px;  font-weight: 600;  color: #0a267a;  text-transform: uppercase;  background: #ffffff;  padding: 16px 34px;  border-radius: 5px;  transition: all 500ms ease;  border: 0px solid #0a267a;  ">
+                                                {{this.subservice}}
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <a class="dropdown-item" *ngFor="let item  of subservices;let i = index" (click)="setSubservice(item)"  style="cursor: pointer !important;">{{item}}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group pos_rel" >
+                                           
+                                        <div class="dropdown">
+                                            <button class="dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="  position: relative; display: inline-block;   font-size: 14px;  line-height: 24px;  font-weight: 600;  color: #0a267a;  text-transform: uppercase;  background: #ffffff;  padding: 16px 34px;  border-radius: 5px;  transition: all 500ms ease;  border: 0px solid #0a267a;  ">
+                                                 {{this.msDays}}   {{this.daysPerMonth}} 
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <a class="dropdown-item" *ngFor="let item of days" (click)="setDays(item)"  style="cursor: pointer !important;">{{item}}</a> 
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group pos_rel">
+                                      
                                         <div class="dropdown">
                                             <button class="dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="  position: relative; display: inline-block;   font-size: 14px;  line-height: 24px;  font-weight: 600;  color: #0a267a;  text-transform: uppercase;  background: #ffffff;  padding: 16px 34px;  border-radius: 5px;  transition: all 500ms ease;  border: 0px solid #0a267a;  ">
-                                                {{this.hoursPerDay}} 
+                                                 {{this.mshours}} {{this.hoursPerDay}}  
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                 <a class="dropdown-item" *ngFor="let item of hours" (click)="setHours(item)"  style="cursor: pointer !important;">{{item}}</a>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="message-btn">
+
+                                       <div class="form-group pos_rel">
+                                             
+                                        <div class="dropdown">
+                                            <button class="dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="  position: relative; display: inline-block;   font-size: 14px;  line-height: 24px;  font-weight: 600;  color: #0a267a;  text-transform: uppercase;  background: #ffffff;  padding: 16px 34px;  border-radius: 5px;  transition: all 500ms ease;  border: 0px solid #0a267a;  ">
+                                              {{this.mscleaners}}   {{this.ncleaners}}  
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <a class="dropdown-item" *ngFor="let item of cleaners" (click)="setCleaners(item)"  style="cursor: pointer !important;">{{item}}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="message-btn" [hidden]="submitted">
                                         <button type="submit">Get a quote</button>
                                     </div>
                                 </div>
                             </form>
+                            
                         </div>
                     </div>
                 </div>
