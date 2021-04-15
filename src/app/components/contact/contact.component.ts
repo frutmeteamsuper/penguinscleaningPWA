@@ -58,7 +58,7 @@ sendContact(){
 	this._uw.contact.message=this.contact.message;
   this._uw.contact.subject="Your have a new contact request";
 	// email del admin
-	this._uw.contact.email="frutmeteam@protonmail.com"; 
+	this._uw.contact.email="penguinscleaningservice@gmail.com"; 
 
 	this.dataApiService.sendMailNewContactAA(this._uw.contact).subscribe();
   this.dataApiService.saveContact(this._uw.contact).subscribe(

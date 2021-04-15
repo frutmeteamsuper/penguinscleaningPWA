@@ -285,16 +285,16 @@ calculate(index){
       this._uw.order.adminName="Jessica",
       // this._uw.order.amount=100,
       this._uw.order.clientEmail=this._uw.order.email,
-      this._uw.order.email="frutmeteam@protonmail.com",
+      this._uw.order.email="penguinscleaningservice@gmail.com",
       // this._uw.order.email="penguinscleaningservice@gmail.com",
       // console.log("uw order hoursPerDay" +this._uw.order.hoursPerDay);
       // this._uw.order.adminName=this._uw.info[0].adminName;
       // this._uw.pedido.adminEmail=this._uw.info[0].adminEmail;
 
 
-/*      this.dataApiService.sendMailNewQuoteAA(this._uw.order).subscribe();
+      this.dataApiService.sendMailNewQuoteAA(this._uw.order).subscribe();
       this.dataApiService.sendMailNewQuoteAU(this._uw.order).subscribe();
-      */
+      
 
       // this.dataApi.sendMailNewQuoteA2U(this._uw.order).subscribe();
       // console.log("enviando...");
