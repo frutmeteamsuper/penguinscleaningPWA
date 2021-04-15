@@ -1,197 +1,182 @@
 
-   <section class="booking-section">
-            <div class="outer-container clearfix">
-                <div class="single-column">
-                    <div class="content_block_5">
-                        <div class="content-box" style="background-image: url(assets/assetspenguins/images/resource/column-bg.jpg);">
-                            <div class="shape" style="background-image: url(assets/assetspenguins/images/shape/shape-6.png);"></div>
-                            <h2>Committed <br />to Cleaning and <br />Excellence</h2>
-                            <ul class="list-item clearfix">
-                                <li>Hassle-free</li>
-                                <li>Friendly & Honest</li>
-                                <li>Reliable & Trustworthy</li>
-                                <li>Dependable</li>
-                                <li>Insured & bonded</li>
-                            </ul>
-                            <div class="support-box">
-                                <h6><i class="flaticon-telephone"></i>Call Now Speak With an Expert <a href="tel:4412345678">+1 (905) 965-4542</a></h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-column" >
-                    <div class="content_block_6">
-                      <div class="content-box">
-                            <div class="bg-layer" style="background-image: url(assets/assetspenguins/images/shape/shape-4.png);"></div>
-                            <div class="sec-title text-left"  [hidden]="submitted">
-                                <h6>Cost Calculator</h6>
-                                <h2>Get a Free Estimation</h2>
-                                 
-                            </div>
-                             <div class="sec-title text-left" [hidden]="!submitted">
-                                <h6>Your Quote Estimation Amount is:</h6>
-                                <h2> {{_uw.order.amount }} $USD </h2>
-
-                            </div>
-                            <form  [formGroup]="ngFormAddOrder" (ngSubmit) ="okOrder()"  class="estimate-form">
-                                <div class="inner-box">
-                                    <div class="form-group pos_rel">
-                                        <input type="text" id="name" name="name" placeholder="Your Name" [(ngModel)]="order.name"  formControlName="name"
-                                      [ngClass]="{ 'is-invalid': submitted && fval2.name.errors }"
-                                      class="form-control"
-                                      required>
-
-
-
-                                        <i class="uil uil-envelope lgn_icon"></i>
-                                        <span class="required"></span>
-                                        <div *ngIf="submitted && fval2.name.errors" class="invalid-feedback">
-                                            <div *ngIf="fval2.name.errors.required" class="errorLabel">
-                                         
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group pos_rel">
-                                        <input type="email" id="email"  name="email" placeholder="Your Email" [(ngModel)]="order.email"  formControlName="email"
-                                      [ngClass]="{ 'is-invalid': submitted && fval2.email.errors }"
-                                      class="form-control"
-                                      required>
-                                    <i class="uil uil-envelope lgn_icon"></i>
-                                      <span class="required"></span>
-                                      <div *ngIf="submitted && fval2.email.errors" class="invalid-feedback">
-                                          <div *ngIf="fval2.email.errors.required" class="errorLabel">
-                                          
-                                          </div>
-                                      </div>
-                                    </div>
-                                    <div class="form-group pos_rel">
-                                        <input type="text" name="phone" id="phone"  placeholder="Your Phone" [(ngModel)]="order.phone"  formControlName="phone" class="form-control" 
-                                      [ngClass]="{ 'is-invalid': submitted && fval2.phone.errors }"
-                                      required>
-                                      <i class="uil uil-envelope lgn_icon"></i>
-                                        <span class="required"></span>
-                                        <div *ngIf="submitted && fval2.phone.errors" class="invalid-feedback">
-                                            <div *ngIf="fval2.phone.errors.required" class="errorLabel">
-                                            
-                                            </div>
-                                        </div>
-                                      
-                                    </div>
-                                 
-
-                                    <div class="form-group pos_rel">
-                                        <input type="text" id="address" name="address" placeholder="Your Address" [(ngModel)]="order.address"  formControlName="address"
-                                      [ngClass]="{ 'is-invalid': submitted && fval2.address.errors }" class="form-control"
-                                      required>
-                                      <i class="uil uil-envelope lgn_icon"></i>
-                                        <span class="required"></span>
-                                        <div *ngIf="submitted && fval2.address.errors" class="invalid-feedback">
-                                            <div *ngIf="fval2.address.errors.required" class="errorLabel">
-                                            
-                                            </div>
-                                        </div>
-                                       
-                                    </div>
-                                    
-
-                                    <div class="form-group pos_rel" >
-
-                                            
-                                        <div class="dropdown">
-                                            <button class="dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="  position: relative; display: inline-block;   font-size: 14px;  line-height: 24px;  font-weight: 600;  color: #0a267a;  text-transform: uppercase;  background: #ffffff;  padding: 16px 34px;  border-radius: 5px;  transition: all 500ms ease;  border: 0px solid #0a267a;  ">
-                                                <i class="flaticon-check-mark"  [hidden]="!typeSeted"></i>
-
-                                                {{this.serviceSelected}}
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <a class="dropdown-item" *ngFor="let item  of serviceOptions2;let i = index" (click)="setType(item,i)"  style="cursor: pointer !important;">{{item.name}}</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group pos_rel" [hidden]="!houseSelected">
-                                      
-                                        <div class="dropdown" >
-                                            <button class="dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="  position: relative; display: inline-block;   font-size: 14px;  line-height: 24px;  font-weight: 600;  color: #0a267a;  text-transform: uppercase;  background: #ffffff;  padding: 16px 34px;  border-radius: 5px;  transition: all 500ms ease;  border: 0px solid #0a267a;  ">
-                                                  <i class="flaticon-check-mark"  [hidden]="!sizeSeted"></i>
-                                                Size: {{this.houseSize}}
-                                            </button>   
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <a class="dropdown-item" (click)="setSize('Basic')"  style="cursor: pointer !important;"> Basic</a>
-                                                <a class="dropdown-item" (click)="setSize('Medium')"  style="cursor: pointer !important;"> Medium</a>  
-                                                <a class="dropdown-item" (click)="setSize('Premium')"  style="cursor: pointer !important;">Premium</a>  
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="form-group pos_rel" [hidden]="!subserviceSelected || houseSelected">
-                                           
-                                        <div class="dropdown" >
-                                            <button class="dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="  position: relative; display: inline-block;   font-size: 14px;  line-height: 24px;  font-weight: 600;  color: #0a267a;  text-transform: uppercase;  background: #ffffff;  padding: 16px 34px;  border-radius: 5px;  transition: all 500ms ease;  border: 0px solid #0a267a;  ">
-                                                 <i class="flaticon-check-mark"  [hidden]="!subserviceSeted"></i>
-                                                {{this.subservice}}
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <a class="dropdown-item" *ngFor="let item  of subservices;let i = index" (click)="setSubservice(item)"  style="cursor: pointer !important;">{{item}}</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="form-group pos_rel"  [hidden]="houseSelected" >
-                                           
-                                        <div class="dropdown">
-                                            <button class="dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="  position: relative; display: inline-block;   font-size: 14px;  line-height: 24px;  font-weight: 600;  color: #0a267a;  text-transform: uppercase;  background: #ffffff;  padding: 16px 34px;  border-radius: 5px;  transition: all 500ms ease;  border: 0px solid #0a267a;  ">
-                                                  <i class="flaticon-check-mark"  [hidden]="!this.daysSeted"></i>
-                                                 {{this.msDays}}   {{this.daysPerMonth}} 
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <a class="dropdown-item" *ngFor="let item of days" (click)="setDays(item)"  style="cursor: pointer !important;">{{item}}</a> 
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group pos_rel" [hidden]="houseSelected" >
-                                      
-                                        <div class="dropdown">
-                                            <button class="dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="  position: relative; display: inline-block;   font-size: 14px;  line-height: 24px;  font-weight: 600;  color: #0a267a;  text-transform: uppercase;  background: #ffffff;  padding: 16px 34px;  border-radius: 5px;  transition: all 500ms ease;  border: 0px solid #0a267a;  ">
-                                                <i class="flaticon-check-mark"  [hidden]="!this.hoursSeted"></i>
-                                                 {{this.mshours}} {{this.hoursPerDay}}  
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <a class="dropdown-item" *ngFor="let item of hours" (click)="setHours(item)"  style="cursor: pointer !important;">{{item}}</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group pos_rel" [hidden]="houseSelected" >
-                                             
-                                        <div class="dropdown">
-                                            <button class="dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="  position: relative; display: inline-block;   font-size: 14px;  line-height: 24px;  font-weight: 600;  color: #0a267a;  text-transform: uppercase;  background: #ffffff;  padding: 16px 34px;  border-radius: 5px;  transition: all 500ms ease;  border: 0px solid #0a267a;  ">
-                                                <i class="flaticon-check-mark"  [hidden]="!this.cleanersSeted"></i>
-                                              {{this.mscleaners}}   {{this.ncleaners}}  
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <a class="dropdown-item" *ngFor="let item of cleaners" (click)="setCleaners(item)"  style="cursor: pointer !important;">{{item}}</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="message-btn" [hidden]="quoteSubmitted || houseSelected " >
-                                        <button type="submit">Get a quote</button>
-                                    </div>
-                                      <div class="message-btn" [hidden]="appointmentSubmitted  || !houseSelected " >
-                                        <button type="submit">Get an appointment
-</button>
-                                    </div>
-                                </div>
-                            </form>
-                            
-                        </div>
+<section class="booking-section">
+    <div class="outer-container clearfix">
+        <div class="single-column">
+            <div class="content_block_5">
+                <div class="content-box" style="background-image: url(assets/assetspenguins/images/resource/column-bg.jpg);">
+                    <div class="shape" style="background-image: url(assets/assetspenguins/images/shape/shape-6.png);"></div>
+                    <h2>Committed <br />to Cleaning and <br />Excellence</h2>
+                    <ul class="list-item clearfix">
+                        <li>Hassle-free</li>
+                        <li>Friendly & Honest</li>
+                        <li>Reliable & Trustworthy</li>
+                        <li>Dependable</li>
+                        <li>Insured & bonded</li>
+                    </ul>
+                    <div class="support-box">
+                        <h6><i class="flaticon-telephone"></i>Call Now Speak With an Expert <a href="tel:4412345678">+1 (905) 965-4542</a></h6>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+        <div class="single-column" >
+            <div class="content_block_6">
+              <div class="content-box">
+                    <div class="bg-layer" style="background-image: url(assets/assetspenguins/images/shape/shape-4.png);"></div>
+                    <div class="sec-title text-left"  [hidden]="submitted">
+                        <h6>Cost Calculator</h6>
+                        <h2>Get a Free Estimation</h2>
+                         
+                    </div>
+                     <div class="sec-title text-left" [hidden]="!submitted">
+                        <h6>Your Quote Estimation Amount is:</h6>
+                        <h2> {{_uw.order.amount }} $USD </h2>
+
+                    </div>
+                    <form  [formGroup]="ngFormAddOrder" (ngSubmit) ="okOrder()"  class="estimate-form">
+                        <div class="inner-box">
+                            <div class="form-group pos_rel">
+                                <input type="text" id="name" name="name" placeholder="Your Name" [(ngModel)]="order.name"  formControlName="name"
+                              [ngClass]="{ 'is-invalid': submitted && fval2.name.errors }"
+                              class="form-control"
+                              required>
+                                <i class="uil uil-envelope lgn_icon"></i>
+                                <span class="required"></span>
+                                <div *ngIf="submitted && fval2.name.errors" class="invalid-feedback">
+                                    <div *ngIf="fval2.name.errors.required" class="errorLabel">
+                                 
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group pos_rel">
+                                <input type="email" id="email"  name="email" placeholder="Your Email" [(ngModel)]="order.email"  formControlName="email"
+                              [ngClass]="{ 'is-invalid': submitted && fval2.email.errors }"
+                              class="form-control"
+                              required>
+                            <i class="uil uil-envelope lgn_icon"></i>
+                              <span class="required"></span>
+                              <div *ngIf="submitted && fval2.email.errors" class="invalid-feedback">
+                                  <div *ngIf="fval2.email.errors.required" class="errorLabel">
+                                  
+                                  </div>
+                              </div>
+                            </div>
+                            <div class="form-group pos_rel">
+                                <input type="text" name="phone" id="phone"  placeholder="Your Phone" [(ngModel)]="order.phone"  formControlName="phone" class="form-control" 
+                              [ngClass]="{ 'is-invalid': submitted && fval2.phone.errors }"
+                              required>
+                              <i class="uil uil-envelope lgn_icon"></i>
+                                <span class="required"></span>
+                                <div *ngIf="submitted && fval2.phone.errors" class="invalid-feedback">
+                                    <div *ngIf="fval2.phone.errors.required" class="errorLabel">                                 
+                                    </div>
+                                </div>
+                            </div>
+                         
+
+                            <div class="form-group pos_rel">
+                                <input type="text" id="address" name="address" placeholder="Your Address" [(ngModel)]="order.address"  formControlName="address"
+                              [ngClass]="{ 'is-invalid': submitted && fval2.address.errors }" class="form-control"
+                              required>
+                              <i class="uil uil-envelope lgn_icon"></i>
+                                <span class="required"></span>
+                                <div *ngIf="submitted && fval2.address.errors" class="invalid-feedback">
+                                    <div *ngIf="fval2.address.errors.required" class="errorLabel">
+                                    </div>
+                                </div>
+                            </div>
+                              <h2 style="text-align: right;"> {{_uw.order.amount }} $USD </h2>
+                            
+
+                            <div class="form-group pos_rel" >          
+                                <div class="dropdown">
+                                    <button class="dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="  position: relative; display: inline-block;   font-size: 14px;  line-height: 24px;  font-weight: 600;  color: #0a267a;  text-transform: uppercase;  background: #ffffff;  padding: 16px 34px;  border-radius: 5px;  transition: all 500ms ease;  border: 0px solid #0a267a;  ">
+                                        <i class="flaticon-check-mark"  [hidden]="!typeSeted"></i>
+                                        {{this.serviceSelected}}
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" *ngFor="let item  of serviceOptions2;let i = index" (click)="setType(item,i)"  style="cursor: pointer !important;">{{item.name}}</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group pos_rel" [hidden]="!houseSelected">
+                                <div class="dropdown" >
+                                    <button class="dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="  position: relative; display: inline-block;   font-size: 14px;  line-height: 24px;  font-weight: 600;  color: #0a267a;  text-transform: uppercase;  background: #ffffff;  padding: 16px 34px;  border-radius: 5px;  transition: all 500ms ease;  border: 0px solid #0a267a;  ">
+                                          <i class="flaticon-check-mark"  [hidden]="!sizeSeted"></i>
+                                        Size: {{this.houseSize}}
+                                    </button>   
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" (click)="setSize('Basic')"  style="cursor: pointer !important;"> Basic</a>
+                                        <a class="dropdown-item" (click)="setSize('Medium')"  style="cursor: pointer !important;"> Medium</a>  
+                                        <a class="dropdown-item" (click)="setSize('Premium')"  style="cursor: pointer !important;">Premium</a>  
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group pos_rel" [hidden]="!subserviceSelected || houseSelected">
+                                <div class="dropdown" >
+                                    <button class="dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="  position: relative; display: inline-block;   font-size: 14px;  line-height: 24px;  font-weight: 600;  color: #0a267a;  text-transform: uppercase;  background: #ffffff;  padding: 16px 34px;  border-radius: 5px;  transition: all 500ms ease;  border: 0px solid #0a267a;  ">
+                                         <i class="flaticon-check-mark"  [hidden]="!subserviceSeted"></i>
+                                        {{this.subservice}}
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" *ngFor="let item  of subservices;let i = index" (click)="setSubservice(item)"  style="cursor: pointer !important;">{{item}}</a>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group pos_rel"  [hidden]="houseSelected" >
+                                <div class="dropdown">
+                                    <button class="dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="  position: relative; display: inline-block;   font-size: 14px;  line-height: 24px;  font-weight: 600;  color: #0a267a;  text-transform: uppercase;  background: #ffffff;  padding: 16px 34px;  border-radius: 5px;  transition: all 500ms ease;  border: 0px solid #0a267a;  ">
+                                          <i class="flaticon-check-mark"  [hidden]="!this.daysSeted"></i>
+                                         {{this.msDays}}   {{this.daysPerMonth}} 
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" *ngFor="let item of days" (click)="setDays(item)"  style="cursor: pointer !important;">{{item}}</a> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group pos_rel" [hidden]="houseSelected" >
+                                <div class="dropdown">
+                                    <button class="dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="  position: relative; display: inline-block;   font-size: 14px;  line-height: 24px;  font-weight: 600;  color: #0a267a;  text-transform: uppercase;  background: #ffffff;  padding: 16px 34px;  border-radius: 5px;  transition: all 500ms ease;  border: 0px solid #0a267a;  ">
+                                        <i class="flaticon-check-mark"  [hidden]="!this.hoursSeted"></i>
+                                         {{this.mshours}} {{this.hoursPerDay}}  
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" *ngFor="let item of hours" (click)="setHours(item)"  style="cursor: pointer !important;">{{item}}</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group pos_rel" [hidden]="houseSelected" >
+                                <div class="dropdown">
+                                    <button class="dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="  position: relative; display: inline-block;   font-size: 14px;  line-height: 24px;  font-weight: 600;  color: #0a267a;  text-transform: uppercase;  background: #ffffff;  padding: 16px 34px;  border-radius: 5px;  transition: all 500ms ease;  border: 0px solid #0a267a;  ">
+                                        <i class="flaticon-check-mark"  [hidden]="!this.cleanersSeted"></i>
+                                      {{this.mscleaners}}   {{this.ncleaners}}  
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" *ngFor="let item of cleaners" (click)="setCleaners(item)"  style="cursor: pointer !important;">{{item}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="message-btn" [hidden]="quoteSubmitted || houseSelected " >
+                                <button type="submit">Get a quote</button>
+                            </div>
+                              <div class="message-btn" [hidden]="appointmentSubmitted  || !houseSelected " >
+                                <button type="submit">Get an appointment
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 
 
