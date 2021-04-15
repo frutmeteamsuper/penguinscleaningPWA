@@ -69,6 +69,8 @@ export class QuoteComponent implements OnInit {
 
   ngFormAddOrder: FormGroup;
   submitted = false;
+  appointmentSubmitted = false;
+  quoteSubmitted = false;
   houseSelected=false;
   selected = false;
   subserviceSelected = false;
@@ -253,6 +255,7 @@ calculate(index){
   }
   public okOrder(){
       this.submitted = true;
+      this.quoteSubmitted=true;
         if (this.ngFormAddOrder.invalid) {
           this._uw.errorFormSendOrder=true;
         return;
@@ -297,6 +300,7 @@ calculate(index){
       // console.log("enviando...");
       this.dataApiService.saveOrder(this._uw.order).subscribe(
         );
+    
     }
 
 
