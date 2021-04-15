@@ -85,8 +85,12 @@ export class QuoteComponent implements OnInit {
   perDayamount= 0;
   perHour=0;
   perCleaner=0;
-
-
+  daysSeted=false;
+  hoursSeted=false;
+  cleanersSeted=false;
+  typeSeted=false;
+  sizeSeted=false;
+  subserviceSeted=false;
   public isError = false;
   public orders:OrderInterface;
   public pagoImage:any[]=[];
@@ -117,8 +121,8 @@ calculate(index){
         this.selected=true;
         this.houseSelected=true;
         this.msProperty="Property or Space: ";
-        this.subserviceSelected=false
-         
+        this.subserviceSelected=false;
+
       }  
       if(item.name=='Hotel, Motel, Chalets, Airbnb.'){
         this.serviceSelected=item.name; 
@@ -201,6 +205,7 @@ calculate(index){
         this.subserviceSelected=true;
         this.subservice="Select one";
       }      
+        this.typeSeted=true;
         this.calculate(index);
   }
   recalcular(){
@@ -209,6 +214,7 @@ calculate(index){
   setSubservice(parametro){
     this._uw.order.subService=parametro;
     this.subservice=parametro;
+    this.subserviceSeted=true;
   }
   setSize(parametro){
     this.houseSize=parametro;
@@ -216,6 +222,7 @@ calculate(index){
     if (parametro=="Basic"){this.serviceOptions2[0].serviceCost=99,99;}
     if (parametro=="Medium"){this.serviceOptions2[0].serviceCost=149,99;}
     if (parametro=="Premium"){this.serviceOptions2[0].serviceCost=199,99;}
+    this.sizeSeted=true;
     this.calculate(0);
   }
   setDays(parametro:number) {
@@ -224,6 +231,7 @@ calculate(index){
     this.daysPerMonth=parametro;
     this.msDays="Days per month";
     this.recalcular();
+    this.daysSeted=true;  
   }
   setHours(parametro:number){
     this.mshours="Hours per day";
@@ -231,11 +239,14 @@ calculate(index){
     this._uw.order.hoursPerDay=parametro;
     this.hoursPerDay=parametro;
     this.recalcular();
+    this.hoursSeted=true;
   }
   setCleaners(parametro:number){
     this.ncleaners=parametro;
     this.recalcular();
     this.mscleaners="Nro of cleaners: ";
+    this.cleanersSeted=true;
+  
   }
  public aleatorio(a,b) {
     return Math.round(Math.random()*(b-a)+parseInt(a));
@@ -295,8 +306,7 @@ calculate(index){
       name: ['', [Validators.required]] ,
       phone:['',[Validators.required]], 
       email:['',[Validators.required]], 
-      address:['',[Validators.required]], 
-
+      address:['',[Validators.required]]
          });
     }
     

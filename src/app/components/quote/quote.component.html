@@ -26,63 +26,72 @@
                             <div class="sec-title text-left"  [hidden]="submitted">
                                 <h6>Cost Calculator</h6>
                                 <h2>Get a Free Estimation</h2>
+                                 
                             </div>
                              <div class="sec-title text-left" [hidden]="!submitted">
                                 <h6>Your Quote Estimation Amount is:</h6>
                                 <h2> {{_uw.order.amount }} $USD </h2>
+
                             </div>
                             <form  [formGroup]="ngFormAddOrder" (ngSubmit) ="okOrder()"  class="estimate-form">
                                 <div class="inner-box">
                                     <div class="form-group pos_rel">
-                                        <input type="text" name="name" placeholder="Your Name" [(ngModel)]="order.name"  formControlName="name"
+                                        <input type="text" id="name" name="name" placeholder="Your Name" [(ngModel)]="order.name"  formControlName="name"
                                       [ngClass]="{ 'is-invalid': submitted && fval2.name.errors }"
+                                      class="form-control"
                                       required>
+
+
+
                                         <i class="uil uil-envelope lgn_icon"></i>
                                         <span class="required"></span>
                                         <div *ngIf="submitted && fval2.name.errors" class="invalid-feedback">
                                             <div *ngIf="fval2.name.errors.required" class="errorLabel">
-                                            * Una dirección de correo electrónico para comunicarnos.
+                                         
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="form-group pos_rel">
-                                        <input type="email" name="email" placeholder="Your Email" [(ngModel)]="order.email"  formControlName="email"
+                                        <input type="email" id="email"  name="email" placeholder="Your Email" [(ngModel)]="order.email"  formControlName="email"
                                       [ngClass]="{ 'is-invalid': submitted && fval2.email.errors }"
+                                      class="form-control"
                                       required>
                                     <i class="uil uil-envelope lgn_icon"></i>
                                       <span class="required"></span>
                                       <div *ngIf="submitted && fval2.email.errors" class="invalid-feedback">
                                           <div *ngIf="fval2.email.errors.required" class="errorLabel">
-                                          * Una dirección de correo electrónico para comunicarnos.
+                                          
                                           </div>
                                       </div>
                                     </div>
                                     <div class="form-group pos_rel">
-                                        <input type="text" name="phone" placeholder="Your Phone" [(ngModel)]="order.phone"  formControlName="phone"
+                                        <input type="text" name="phone" id="phone"  placeholder="Your Phone" [(ngModel)]="order.phone"  formControlName="phone" class="form-control" 
                                       [ngClass]="{ 'is-invalid': submitted && fval2.phone.errors }"
                                       required>
-                                        <i class="uil uil-envelope lgn_icon"></i>
+                                      <i class="uil uil-envelope lgn_icon"></i>
                                         <span class="required"></span>
                                         <div *ngIf="submitted && fval2.phone.errors" class="invalid-feedback">
                                             <div *ngIf="fval2.phone.errors.required" class="errorLabel">
-                                            * Un numero telefonico para comunicarnos.
+                                            
                                             </div>
                                         </div>
+                                      
                                     </div>
                                  
 
                                     <div class="form-group pos_rel">
-                                        <input type="text" name="address" placeholder="Your Adddress" [(ngModel)]="order.address"  formControlName="address"
-                                      [ngClass]="{ 'is-invalid': submitted && fval2.address.errors }"
+                                        <input type="text" id="address" name="address" placeholder="Your Address" [(ngModel)]="order.address"  formControlName="address"
+                                      [ngClass]="{ 'is-invalid': submitted && fval2.address.errors }" class="form-control"
                                       required>
-                                        <i class="uil uil-envelope lgn_icon"></i>
+                                      <i class="uil uil-envelope lgn_icon"></i>
                                         <span class="required"></span>
                                         <div *ngIf="submitted && fval2.address.errors" class="invalid-feedback">
                                             <div *ngIf="fval2.address.errors.required" class="errorLabel">
-                                            * Un numero telefonico para comunicarnos.
+                                            
                                             </div>
                                         </div>
+                                       
                                     </div>
                                     
 
@@ -91,6 +100,8 @@
                                             
                                         <div class="dropdown">
                                             <button class="dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="  position: relative; display: inline-block;   font-size: 14px;  line-height: 24px;  font-weight: 600;  color: #0a267a;  text-transform: uppercase;  background: #ffffff;  padding: 16px 34px;  border-radius: 5px;  transition: all 500ms ease;  border: 0px solid #0a267a;  ">
+                                                <i class="flaticon-check-mark"  [hidden]="!typeSeted"></i>
+
                                                 {{this.serviceSelected}}
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -103,6 +114,7 @@
                                       
                                         <div class="dropdown" >
                                             <button class="dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="  position: relative; display: inline-block;   font-size: 14px;  line-height: 24px;  font-weight: 600;  color: #0a267a;  text-transform: uppercase;  background: #ffffff;  padding: 16px 34px;  border-radius: 5px;  transition: all 500ms ease;  border: 0px solid #0a267a;  ">
+                                                  <i class="flaticon-check-mark"  [hidden]="!sizeSeted"></i>
                                                 Size: {{this.houseSize}}
                                             </button>   
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -118,6 +130,7 @@
                                            
                                         <div class="dropdown" >
                                             <button class="dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="  position: relative; display: inline-block;   font-size: 14px;  line-height: 24px;  font-weight: 600;  color: #0a267a;  text-transform: uppercase;  background: #ffffff;  padding: 16px 34px;  border-radius: 5px;  transition: all 500ms ease;  border: 0px solid #0a267a;  ">
+                                                 <i class="flaticon-check-mark"  [hidden]="!subserviceSeted"></i>
                                                 {{this.subservice}}
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -131,6 +144,7 @@
                                            
                                         <div class="dropdown">
                                             <button class="dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="  position: relative; display: inline-block;   font-size: 14px;  line-height: 24px;  font-weight: 600;  color: #0a267a;  text-transform: uppercase;  background: #ffffff;  padding: 16px 34px;  border-radius: 5px;  transition: all 500ms ease;  border: 0px solid #0a267a;  ">
+                                                  <i class="flaticon-check-mark"  [hidden]="!this.daysSeted"></i>
                                                  {{this.msDays}}   {{this.daysPerMonth}} 
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -142,6 +156,7 @@
                                       
                                         <div class="dropdown">
                                             <button class="dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="  position: relative; display: inline-block;   font-size: 14px;  line-height: 24px;  font-weight: 600;  color: #0a267a;  text-transform: uppercase;  background: #ffffff;  padding: 16px 34px;  border-radius: 5px;  transition: all 500ms ease;  border: 0px solid #0a267a;  ">
+                                                <i class="flaticon-check-mark"  [hidden]="!this.hoursSeted"></i>
                                                  {{this.mshours}} {{this.hoursPerDay}}  
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -154,6 +169,7 @@
                                              
                                         <div class="dropdown">
                                             <button class="dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="  position: relative; display: inline-block;   font-size: 14px;  line-height: 24px;  font-weight: 600;  color: #0a267a;  text-transform: uppercase;  background: #ffffff;  padding: 16px 34px;  border-radius: 5px;  transition: all 500ms ease;  border: 0px solid #0a267a;  ">
+                                                <i class="flaticon-check-mark"  [hidden]="!this.cleanersSeted"></i>
                                               {{this.mscleaners}}   {{this.ncleaners}}  
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">

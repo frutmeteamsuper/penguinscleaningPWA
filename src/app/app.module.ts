@@ -65,6 +65,11 @@ import { CovidComponent } from './components/covid/covid.component';
 import { CarpetComponent } from './components/carpet/carpet.component';
 import { QuoteComponent } from './components/quote/quote.component';
 import { SuccessComponent } from './components/success/success.component';
+import { ProjectoneComponent } from './components/projectone/projectone.component';
+import { ProjecttwoComponent } from './components/projecttwo/projecttwo.component';
+import { ProjectthreeComponent } from './components/projectthree/projectthree.component';
+import { ProjectfourComponent } from './components/projectfour/projectfour.component';
+import { GalleryComponent } from './components/gallery/gallery.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +96,11 @@ import { SuccessComponent } from './components/success/success.component';
     CarpetComponent,
     QuoteComponent,
     SuccessComponent,
+    ProjectoneComponent,
+    ProjecttwoComponent,
+    ProjectthreeComponent,
+    ProjectfourComponent,
+    GalleryComponent,
   ],
   imports: [
     BrowserModule,

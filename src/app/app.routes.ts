@@ -18,7 +18,13 @@ import {
 	CovidComponent,
 	CarpetComponent,
 	TopbarComponent,
-	PagoComponent
+	PagoComponent,
+	ProjectsComponent,
+	ProjectoneComponent,
+	ProjecttwoComponent,
+	ProjectthreeComponent,
+	ProjectfourComponent,
+	GalleryComponent
 
 	}from "./components/index.paginas";
 
@@ -34,6 +40,12 @@ const app_routes: Routes = [
 	{path:'office',component:OfficeComponent},
 	{path:'events',component:EventsComponent},
 	{path:'quote',component:QuoteComponent},
+	{path:'projects',component:ProjectsComponent},
+	{path:'projectone',component:ProjectoneComponent},
+	{path:'projecttwo',component:ProjecttwoComponent},
+	{path:'projectthree',component:ProjectthreeComponent},
+	{path:'projectfour',component:ProjectfourComponent},
+	{path:'gallery',component:GalleryComponent},
 	{path:'commercial',component:CommercialComponent},
 	{path:'commercialone',component:CommercialoneComponent},
 	{path:'commercialtwo',component:CommercialtwoComponent},
