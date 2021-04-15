@@ -55,26 +55,99 @@
                     <p>Do not hesitate to contact us using the form below.</p>
                 </div>
                 <div class="form-inner">
-                    <form method="post" action="http://st.ourhtmldemo.com/new/Sanito1/sendemail.php" id="contact-form" class="default-form"> 
+                    <form  [formGroup]="ngFormAddContact" (ngSubmit) ="sendContact()"  class="estimate-form"> 
                         <div class="row clearfix">
+
+
                             <div class="col-lg-6 col-md-6 col-sm-12 form-group">
-                                <input type="text" name="username" placeholder="Full Name" required="">
+                                <div class="form-group pos_rel">
+                                      <input type="text" id="name" name="name" placeholder="Full name" [(ngModel)]="contact.name"  formControlName="name"
+                                    [ngClass]="{ 'is-invalid': submitted && fval2.name.errors }"
+                                    class="form-control"
+                                    required>
+                                      <i class="uil uil-envelope lgn_icon"></i>
+                                      <span class="required"></span>
+                                      <div *ngIf="submitted && fval2.name.errors" class="invalid-feedback">
+                                          <div *ngIf="fval2.name.errors.required" class="errorLabel">
+                                       
+                                          </div>
+                                      </div>
+                                  </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 form-group">
-                                <input type="text" name="company" placeholder="Organization Name" required="">
+                               <div class="form-group pos_rel">
+                                  <input type="text" id="organization" name="organization" placeholder="Organization" [(ngModel)]="contact.organization"  formControlName="organization"
+                                [ngClass]="{ 'is-invalid': submitted && fval2.organization.errors }"
+                                class="form-control"
+                                required>
+                                  <i class="uil uil-envelope lgn_icon"></i>
+                                  <span class="required"></span>
+                                  <div *ngIf="submitted && fval2.organization.errors" class="invalid-feedback">
+                                      <div *ngIf="fval2.organization.errors.required" class="errorLabel">
+                                   
+                                      </div>
+                                  </div>
+                              </div>
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 form-group">
-                                <input type="email" name="email" placeholder="Email Address" required="">
+                                <div class="form-group pos_rel">
+                                    <input type="email" id="email"  name="email" placeholder="Your Email" [(ngModel)]="contact.email"  formControlName="email"
+                                  [ngClass]="{ 'is-invalid': submitted && fval2.email.errors }"
+                                  class="form-control"
+                                  required>
+                                  <i class="uil uil-envelope lgn_icon"></i>
+                                  <span class="required"></span>
+                                  <div *ngIf="submitted && fval2.email.errors" class="invalid-feedback">
+                                      <div *ngIf="fval2.email.errors.required" class="errorLabel">
+                                      
+                                      </div>
+                                  </div>
+                                </div>
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 form-group">
-                                <input type="text" name="phone" required="" placeholder="Phone Number">
+                                <div class="form-group pos_rel">
+                                  <input type="text" name="phone" id="phone"  placeholder="Your Phone" [(ngModel)]="contact.phone"  formControlName="phone" class="form-control" 
+                                  [ngClass]="{ 'is-invalid': submitted && fval2.phone.errors }"
+                                  required>
+                                   <i class="uil uil-envelope lgn_icon"></i>
+                                  <span class="required"></span>
+                                  <div *ngIf="submitted && fval2.phone.errors" class="invalid-feedback">
+                                      <div *ngIf="fval2.phone.errors.required" class="errorLabel">                                 
+                                      </div>
+                                  </div>
+                                </div>
                             </div>
                             <div class="col-lg-4 col-md-12 col-sm-12 form-group">
-                                <input type="text" name="subject" required="" placeholder="Subject">
+                                <div class="form-group pos_rel">
+                                  <input type="text" name="subject" id="subject"  placeholder="Subject" [(ngModel)]="contact.subject"  formControlName="subject" class="form-control" 
+                                  [ngClass]="{ 'is-invalid': submitted && fval2.subject.errors }"
+                                  required>
+                                  <i class="uil uil-envelope lgn_icon"></i>
+                                  <span class="required"></span>
+                                  <div *ngIf="submitted && fval2.subject.errors" class="invalid-feedback">
+                                      <div *ngIf="fval2.subject.errors.required" class="errorLabel">                                 
+                                      </div>
+                                  </div>
+                                </div>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 form-group">
-                                <textarea name="message" placeholder="Your Message"></textarea>
+                              <div class="form-group pos_rel">
+                                <textarea type="text" id="message" name="message" placeholder="Your message" [(ngModel)]="contact.message"  formControlName="message"
+                                [ngClass]="{ 'is-invalid': submitted && fval2.message.errors }" class="form-control"
+                                required> </textarea>
+                                <i class="uil uil-envelope lgn_icon"></i>
+                                <span class="required"></span>
+                                <div *ngIf="submitted && fval2.message.errors" class="invalid-feedback">
+                                    <div *ngIf="fval2.message.errors.required" class="errorLabel">
+                                    </div>
+                                </div>
+                              </div> 
                             </div>
+
+
+                          
+
+                       
                             <div class="col-lg-12 col-md-12 col-sm-12 form-group message-btn centred">
                                 <button class="theme-btn-three thm-btn" type="submit" name="submit-form">Send Message</button>
                             </div>

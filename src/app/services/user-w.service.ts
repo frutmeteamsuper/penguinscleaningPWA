@@ -22,9 +22,11 @@ export class UserWService {
 		paypal:boolean=false;
 		zelle:boolean=false;
 	categorySelected:string;
+	contact:any={};
 	editingTrek:boolean=false;
 	errorFormAffiliate:boolean;
-	errorFormAddtixs:boolean;
+	errorFormAddtixs:boolean;	
+	errorFormSendContact:boolean;
 	errorFormPartner:boolean;
 	errorFormSendSale:boolean;
 	errorFormSendOrder:boolean;

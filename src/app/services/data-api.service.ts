@@ -6,6 +6,7 @@ import { AuthService } from './auth.service';
 import { TixInterface } from '../models/tix-interface';
 import { SaleInterface } from '../models/sale-interface';
 import { OrderInterface } from '../models/order-interface';
+import { ContactInterface } from '../models/contact-interface';
 import { InfoInterface } from '../models/info-interface';
 import { UserWService } from "./user-w.service";
 
@@ -38,6 +39,12 @@ export class DataApiService {
 		const url_api='https://email.penguinscleaning.ca:3005/newQuoteAA';
 		return this.http
 		.post(url_api, order)
+		.pipe(map(data => data));
+	}
+	sendMailNewContactAA(contact){
+		const url_api='https://email.penguinscleaning.ca:3005/newContactAA';
+		return this.http
+		.post(url_api, contact)
 		.pipe(map(data => data));
 	}
 	sendMailNewQuoteAU(order){
@@ -79,6 +86,12 @@ export class DataApiService {
 		const url_api='https://db.penguinscleaning.ca:3022/api/order';
 		return this.http
 		.post<OrderInterface>(url_api, order)
+		.pipe(map(data => data));
+	}
+	saveContact(contact :ContactInterface){
+		const url_api='https://db.penguinscleaning.ca:3022/api/contacts';
+		return this.http
+		.post<ContactInterface>(url_api, contact)
 		.pipe(map(data => data));
 	}
 	sendMailNewBookAppToAdmin(book){
