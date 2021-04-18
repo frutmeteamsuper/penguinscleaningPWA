@@ -599,7 +599,7 @@ img {
   line-height: 55px;
   position: fixed;
   bottom: 105%;
-  right: 60px;
+  right: 20px;
   font-size: 20px;
   border-radius: 5px;
   z-index: 99;
@@ -610,7 +610,7 @@ img {
 }
 
 .scroll-top.open {
-  bottom: 60px;
+  bottom: 20px;
 }
 
 .scroll-top span{
