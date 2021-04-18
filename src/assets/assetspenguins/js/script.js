@@ -22,8 +22,8 @@
 			var siteHeader = $('.main-header');
 			var scrollLink = $('.scroll-top');
 			if (windowpos >= 130) {
-				// siteHeader.addClass('fixed-header');
-				// scrollLink.addClass('open');
+				siteHeader.addClass('fixed-header');
+				scrollLink.addClass('open');
 			} else {
 				siteHeader.removeClass('fixed-header');
 				scrollLink.removeClass('open');
