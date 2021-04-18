@@ -10,7 +10,7 @@
                     <ul class="list-item clearfix" style="margin-bottom:60px;">
                         <li>Answer our questionnaire to know <br/>more about yourself</li>
                         <li>Select the service <br/>that you require</li>
-                        <li>Select number  <br/>of hours per day, <br/>number of cleaners,<br/> and days per month <br/>that you request the service </li>
+                        <li>Select number  <br/>of <b>hours</b> per day, <br/>number of <b>cleaners</b>,<br/> and <b>days</b> per month <br/>that you request the service </li>
                         <li>Get a real-time quote</li>
                         <li>Remember recurring services  <br/> get a discount</li>
                     </ul>
@@ -94,7 +94,7 @@
                                     </div>
                                 </div>
                             </div>
-                              <h2 style="text-align: right;"> {{_uw.order.amount }} $CAD + HST </h2>
+                              <h2 style="text-align: right;" [hidden]="!_uw.order.amount"> {{_uw.order.amount }} $CAD + HST </h2>
                             
 
                             <div class="form-group pos_rel" >          

@@ -206,9 +206,23 @@ calculate(index){
         this.msProperty="Property or Space: ";
         this.subserviceSelected=true;
         this.subservice="Select one";
-      }      
-        this.typeSeted=true;
-        this.calculate(index);
+      } 
+      this.daysPerMonth="Days per month";
+      this.hoursPerDay="Hours per day";
+      this.ncleaners="Cleaners";     
+      this.typeSeted=true;
+      this.sizeSeted=false;
+      this.daysSeted=false;  
+      this.hoursSeted=false;
+      this.cleanersSeted=false;
+      this.calculate(index);
+  }
+    calculateHouse(parametro){
+    this._uw.order.amount=0;
+     if (parametro=="Basic"){this.serviceOptions2[0].serviceCost=99,99;}
+    if (parametro=="Medium"){this.serviceOptions2[0].serviceCost=149,99;}
+    if (parametro=="Premium"){this.serviceOptions2[0].serviceCost=199,99;}
+    this._uw.order.amount=this.serviceOptions2[this._uw.order.serviceSelectedId].serviceCost;
   }
   recalcular(){
     this._uw.order.amount=this.serviceOptions2[this._uw.order.serviceSelectedId].serviceCost*this.daysPerMonth*this.hoursPerDay*this.ncleaners;
@@ -225,7 +239,7 @@ calculate(index){
     if (parametro=="Medium"){this.serviceOptions2[0].serviceCost=149,99;}
     if (parametro=="Premium"){this.serviceOptions2[0].serviceCost=199,99;}
     this.sizeSeted=true;
-    this.calculate(0);
+    this.calculateHouse(this.houseSize);
   }
   setDays(parametro:number) {
     this.daysPerMonth=parametro+" Days per month: " ;
