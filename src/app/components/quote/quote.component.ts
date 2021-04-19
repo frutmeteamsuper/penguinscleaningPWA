@@ -77,13 +77,13 @@ export class QuoteComponent implements OnInit {
   serviceSelected="Service Type";
   houseSize="Select size";
   subservice="Select one";
-  daysPerMonth:any="Days per month";
-  hoursPerDay:any="Hours per day";
-  msDays:any="";
+  daysPerMonth:any="0";
+  hoursPerDay:any="0";
+  msDays:any="Days per month";
   msProperty:any="Property or Space: ";
-  mshours:any="";
-  mscleaners:any="";
-  ncleaners:any="Cleaners";
+  mshours:any="Hours per day";
+  mscleaners:any="Cleaners";
+  ncleaners:any="0";
   perDayamount= 0;
   perHour=0;
   perCleaner=0;
@@ -207,9 +207,9 @@ calculate(index){
         this.subserviceSelected=true;
         this.subservice="Select one";
       } 
-      this.daysPerMonth="Days per month";
-      this.hoursPerDay="Hours per day";
-      this.ncleaners="Cleaners";     
+      // this.daysPerMonth="Days per month";
+      // this.hoursPerDay="Hours per day";
+      // this.ncleaners="Cleaners";     
       this.typeSeted=true;
       this.sizeSeted=false;
       this.daysSeted=false;  
@@ -248,6 +248,72 @@ calculate(index){
     this.msDays="Days per month";
     this.recalcular();
     this.daysSeted=true;  
+  }
+  plusHours(){
+    if(this.hoursPerDay==="0"){
+        this.hoursPerDay=0;
+      }
+    if(this.hoursPerDay<24){
+        this.hoursPerDay=this.hoursPerDay+1;
+        this._uw.order.hoursPerDay= this.hoursPerDay
+         this.mshours="Hours per day";
+        this.recalcular();
+        this.hoursSeted=true;
+      }
+  }
+   minusHours(){
+    if(this.hoursPerDay>1){
+    this.hoursPerDay=this.hoursPerDay-1;
+    this._uw.order.hoursPerDay= this.hoursPerDay
+     this.mshours="Hours per day";
+    this.recalcular();
+    this.hoursSeted=true;
+    }
+  }  
+
+  plusDays(){
+    if(this.daysPerMonth==="0"){
+        this.daysPerMonth=0;
+      }
+    if(this.daysPerMonth<30){
+        this.daysPerMonth=this.daysPerMonth+1;
+        this._uw.order.daysPerMonth= this.daysPerMonth
+         this.msDays="Days per month";
+        this.recalcular();
+        this.daysSeted=true;
+      }
+  }
+   minusDays(){
+    if(this.daysPerMonth>1){
+    this.daysPerMonth=this.daysPerMonth-1;
+    this._uw.order.daysPerMonth= this.daysPerMonth
+     this.msDays="Days per month";
+    this.recalcular();
+    this.daysSeted=true;
+    }
+  } 
+
+
+   plusCleaners(){
+    if(this.ncleaners==="0"){
+        this.ncleaners=0;
+      }
+    if(this.ncleaners<5){
+        this.ncleaners=this.ncleaners+1;
+        this._uw.order.ncleaners= this.ncleaners
+         this.mscleaners="Cleaners";
+        this.recalcular();
+        this.cleanersSeted=true;
+      }
+  }
+   minusCleaners(){
+    if(this.ncleaners>1){
+    this.ncleaners=this.ncleaners-1;
+    this._uw.order.ncleaners= this.ncleaners
+     this.mscleaners="Cleaners";
+    this.recalcular();
+    this.cleanersSeted=true;
+    }
   }
   setHours(parametro:number){
     this.mshours="Hours per day";
