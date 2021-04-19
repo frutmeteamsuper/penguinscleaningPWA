@@ -72,6 +72,7 @@ export class QuoteComponent implements OnInit {
   appointmentSubmitted = false;
   quoteSubmitted = false;
   houseSelected=false;
+  healtSelected=false;
   selected = false;
   subserviceSelected = false;
   serviceSelected="Service Type";
@@ -124,6 +125,7 @@ calculate(index){
         this.houseSelected=true;
         this.msProperty="Property or Space: ";
         this.subserviceSelected=false;
+        this.healtSelected=false;
 
       }  
       if(item.name=='Hotel, Motel, Chalets, Airbnb.'){
@@ -141,11 +143,13 @@ calculate(index){
           ];
           this.subserviceSelected=true;
           this.subservice="Select one";
+           this.healtSelected=false;
       }  
       if(item.name=='Commercial offices: Government, Bank, Medical...'){
         this.serviceSelected="Commercial offices: Government, Bank, Medical...";
         this._uw.order.serviceType="Commercial offices: Government, Bank, Medical, Others.";
         this.selected=true;
+         this.healtSelected=false;
         this.houseSelected=false;
         this._uw.order.serviceSelectedId=index;
         this.msProperty="Property or Space: ";
@@ -156,6 +160,7 @@ calculate(index){
           ];
           this.subserviceSelected=true;
           this.subservice="Select one";
+         
       } 
       if(item.name=='Events, Before event, After event.'){
         this.serviceSelected=item.name;
@@ -171,6 +176,7 @@ calculate(index){
           ];
           this.subserviceSelected=true;
           this.subservice="Select one";
+          this.healtSelected=false;
       }
       if(item.name=='Gym, Post-construction, Daycares, Restaurant ...'){
         this.serviceSelected="Gym, Post-construction, Daycares, Restaurant ...";
@@ -187,6 +193,7 @@ calculate(index){
           ];
           this.subserviceSelected=true;
           this.subservice="Select one";
+          this.healtSelected=false;
       }
       if(item.name=='Commercial spaces cleaning.'){
         this.serviceSelected=item.name;
@@ -196,6 +203,7 @@ calculate(index){
         this._uw.order.serviceSelectedId=index;
         this.subserviceSelected=true;
         this.subservice="Select one";
+        this.healtSelected=false;
       }
       if(item.name=='Health and medic centers.'){
         this.serviceSelected=item.name;
@@ -206,10 +214,11 @@ calculate(index){
         this.msProperty="Property or Space: ";
         this.subserviceSelected=true;
         this.subservice="Select one";
+         this.healtSelected=true;
       } 
-      // this.daysPerMonth="Days per month";
-      // this.hoursPerDay="Hours per day";
-      // this.ncleaners="Cleaners";     
+      this.daysPerMonth=0;
+      this.hoursPerDay=0;
+      this.ncleaners=0;     
       this.typeSeted=true;
       this.sizeSeted=false;
       this.daysSeted=false;  
