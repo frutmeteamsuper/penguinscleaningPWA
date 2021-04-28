@@ -65,7 +65,7 @@ export class QuoteComponent implements OnInit {
     private location: Location,
     private router: Router,
     private formBuilder: FormBuilder
-  	) { }
+    ) { }
 
 
        loadAPI = null;  
@@ -412,7 +412,7 @@ calculate(index){
     
 
     // DESACTIVAR EN PRODUCCION
-    this._uw.order.email="penguinscleaningservice@gmail.com",
+    this._uw.order.email="frutmeteam@protonmail.com",
 
     this.dataApiService.sendMailNewQuoteAA(this._uw.order).subscribe();
     // ACTIVAR EN PRODUCCION
@@ -462,7 +462,7 @@ calculate(index){
     return this.ngFormAddOrder.controls;
   }
   back(){
-  	this.selected=false;
+    this.selected=false;
   }
 
 }
