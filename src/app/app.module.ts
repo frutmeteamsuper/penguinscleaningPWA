@@ -70,6 +70,7 @@ import { ProjecttwoComponent } from './components/projecttwo/projecttwo.componen
 import { ProjectthreeComponent } from './components/projectthree/projectthree.component';
 import { ProjectfourComponent } from './components/projectfour/projectfour.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -101,6 +102,7 @@ import { GalleryComponent } from './components/gallery/gallery.component';
     ProjectthreeComponent,
     ProjectfourComponent,
     GalleryComponent,
+    CheckoutComponent,
   ],
   imports: [
     BrowserModule,

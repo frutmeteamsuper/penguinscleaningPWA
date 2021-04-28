@@ -30,3 +30,23 @@
 .remove-btn:hover{
 
 }
+.ui.selection.dropdown.vchrt-dropdown {
+    border: 1px solid #efefef;
+    font-weight: 400;
+    color: #005e53;
+  border-radius: 5px;
+}
+
+.ui.selection.dropdown.vchrt-dropdown:hover {
+    border-color: #efefef;
+}
+
+.ui.selection.visible.dropdown.vchrt-dropdown>.text:not(.default) {
+    font-weight: 400;
+    color: #005e53;
+}
+
+.ui.dropdown.vchrt-dropdown .menu>.item {
+    color: #005e53 !important;
+    font-weight: 400 !important;
+}

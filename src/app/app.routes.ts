@@ -24,7 +24,8 @@ import {
 	ProjecttwoComponent,
 	ProjectthreeComponent,
 	ProjectfourComponent,
-	GalleryComponent
+	GalleryComponent,
+	CheckoutComponent
 
 	}from "./components/index.paginas";
 
@@ -35,6 +36,7 @@ const app_routes: Routes = [
 	{path:'topbar',component:TopbarComponent},
 	{path:'footer',component:FooterComponent},
 	{path:'company',component:CompanyComponent},
+	{path:'checkout',component:CheckoutComponent},
 	{path:'menu',component:MenuComponent},
 	{path:'house',component:HouseComponent},
 	{path:'office',component:OfficeComponent},

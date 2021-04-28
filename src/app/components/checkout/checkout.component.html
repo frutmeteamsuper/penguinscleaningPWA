@@ -1,0 +1,98 @@
+
+
+
+        <!-- checkout-page-section -->
+        <section class="checkout-page-section">
+            <div class="auto-container">
+                <div class="order-information">
+                    <div class="row clearfix">                         
+                        <div class="col-lg-6 col-md-12 col-sm-12 right-column">
+                            <div class="order-summary">
+                                <h4>Order Summary</h4>
+                                <div class="inner-box">
+                                    <div class="single-item">
+                                        <figure class="image-box"><img src="assets/assetspenguins/images/background/clean.jpg" alt=""></figure>
+                                        <p>{{_uw.order.serviceType}} cleaning ({{_uw.order.houseSize}})</p>
+                                        <h6>${{_uw.order.amount }}</h6>
+                                    </div>
+                                   
+                                </div>
+                                <ul class="total-box clearfix">
+                                    <li>Sub total<span>${{_uw.order.amount }}</span></li>
+                                    <li>HST  <span>${{_uw.order.amount *12/100 |  number:'1.0-2' }}</span></li>
+                                   
+                                </ul>
+                                <div class="tax-box">
+                                    <h5>Total (Including Tax)<span>${{(_uw.order.amount *12/100)+_uw.order.amount |  number:'1.0-2' }}</span></h5>
+                                </div>
+                            
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-12 col-sm-12 left-column" [hidden]="ccInfo">
+                            <div class="information-inner">
+                                <div class="contact-information">
+                                    <h3>Contact Information</h3>
+                                    <div class="field-input">
+                                        <input type="text" name="phone" placeholder="Phone Number" required="">
+                                    </div>
+                                    <div class="field-input">
+                                        <input type="email" name="email" placeholder="Email Address" required="">
+                                    </div>
+                                    
+                                </div>
+                                <div class="acc-content">
+                                    <div class="payment-info">
+                                        <div class="row clearfix">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                 <div class="btn-box"  [hidden]="ccInfo">
+                                    <a class="theme-btn-four thm-btn" (click)="setCCInfo()">Continue</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-12 col-sm-12 left-column" [hidden]="!ccInfo">
+                            <div class="information-inner" style="padding-left: 10px; padding-right: 10px;">
+                                <div class="contact-information">
+                                    <h3>CreditCard info</h3>
+                                     <div class="credit-card">
+                                        <div>
+                                            <div #cardInfo></div>   
+                                            <div class="error" *ngIf="cardError">
+                                                {{cardError}}
+
+                                            </div>  
+                                        </div>
+                                        <div>
+                                          <button (click)="onClick()">Pagar</button>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+<!--                 <div class="payment-method">
+                    <h3>Choose a Payment Method</h3>
+                    <ul class="accordion-box">
+                       
+                        <li class="accordion block active-block">
+                            <div class="acc-btn">
+                                <div class="icon-outer"><i class="fas fa-sort-down"></i></div>
+                                <h5>Credir Card / Debit Card</h5>
+                            </div>
+                            
+                        </li>
+                      
+                    </ul>
+                </div> -->
+            </div>
+        </section>
+        <!-- checkout-page-section end -->
+
+

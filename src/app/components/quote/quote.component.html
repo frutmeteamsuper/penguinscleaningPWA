@@ -5,11 +5,11 @@
             <div class="content_block_5">
                 <div class="content-box" style="background-image: url(assets/assetspenguins/images/resource/column-bg.jpg);">
                     <div class="shape" style="background-image: url(assets/assetspenguins/images/shape/shape-6.png);"></div>
-                    <h2>How to get a quote <br/>with our alculator <br/>to Cleaning<br/> and Excellence</h2>
+                    <h2>How get a quote <br/>to cleanning  <br/>with our alculator<br/> </h2>
      
                     <ul class="list-item clearfix" style="margin-bottom:60px;">
                         <li>Answer our questionnaire to know <br/>more about yourself</li>
-                        <li>Select the service <br/>that you require</li>
+                        <li>Select type of service <br/>that you require</li>
                         <li>Select number  <br/>of <b>hours</b> per day, <br/>number of <b>cleaners</b>,<br/> and <b>days</b> per month <br/>that you request the service </li>
                         <li>Get a real-time quote</li>
                         <li>Remember recurring services  <br/> get a discount</li>
@@ -98,7 +98,23 @@
                              
                             
 
-                            <div class="form-group pos_rel" >          
+                            <div class="form-group pos_rel" >   
+<!--  {{this.serviceSelected}}
+ <select class="wide">  
+
+        
+                                           <option  *ngFor="let item  of serviceOptions2;let i = index"  (click)="setType(item,i)" >
+                                           
+                                            <span >
+                                           {{item.name}}
+                                           </span>
+                                              
+                                       </option>
+ 
+                                         
+                                        </select> -->
+
+
                                 <div class="dropdown">
                                     <button class="dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="  position: relative; display: inline-block;   font-size: 14px;  line-height: 24px;  font-weight: 600;  color: #0a267a;  text-transform: uppercase;  background: #ffffff;  padding: 16px 34px;  border-radius: 5px;  transition: all 500ms ease;  border: 0px solid #0a267a;  ">
                                         <i class="flaticon-check-mark"  [hidden]="!typeSeted"></i>
@@ -143,7 +159,7 @@
                                   <span style="color: #0a267a; font-size: 12px;">
                                   <i class="flaticon-check-mark"  [hidden]="!this.daysSeted"></i>
                               </span>
-                                  <span>
+                                  <span style=" font-size: 12px;">
                                       
                                   {{this.msDays}}:  
                                   </span>
@@ -161,7 +177,7 @@
                             <div class="form-group pos_rel"  [hidden]="houseSelected || !selected" >
                                 <span style="color: #0a267a; font-size: 12px;">
                                   <i class="flaticon-check-mark"  [hidden]="!this.hoursSeted"></i></span>
-                                <span>
+                                <span style=" font-size: 12px;">
                                   {{this.mshours}}:  
                                 </span>
 
@@ -181,7 +197,7 @@
                                 <span style="color: #0a267a; font-size: 12px;">
                                   <i class="flaticon-check-mark"  [hidden]="!this.cleanersSeted"></i>
                                 </span>
-                                <span>
+                                <span style=" font-size: 12px;">
                                   {{this.mscleaners}}:  
                                 </span>
                                 <a class="remove-btn" style="border-radius: 30px; cursor: pointer;" (click)="minusCleaners()">
@@ -203,10 +219,10 @@
 
 
                             <div class="message-btn" [hidden]="quoteSubmitted || houseSelected " >
-                                <button type="submit">Get a quote</button>
+                                <button type="submit" (click)="setQuote()">Get a quote</button>
                             </div>
                               <div class="message-btn" [hidden]="appointmentSubmitted  || !houseSelected " >
-                                <button type="submit">Get an appointment
+                                <button type="submit" (click)="setAppointment()">Get an appointment
                                 </button>
                             </div>
                         </div>

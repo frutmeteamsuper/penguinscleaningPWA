@@ -22,6 +22,7 @@ export { GalleryComponent } from "./gallery/gallery.component";
 // export { FruitbannerboxComponent } from "./fruitbannerbox/fruitbannerbox.component";
 
 export { TopbarComponent } from "./topbar/topbar.component";
+export { CheckoutComponent } from "./checkout/checkout.component";
 export { FooterComponent } from "./footer/footer.component";
 export { CompanyComponent } from "./company/company.component";
 export { PagoComponent } from "./pago/pago.component";

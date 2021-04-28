@@ -8,6 +8,7 @@ export class UserWService {
 	adminName:string;
 	affiliate:boolean;
 	allLoaded:boolean=false;
+	appointmentSubmitted:boolean=false;
 	assBook:any={};
 	assValidation:any={};
 	bandera:string;
@@ -52,6 +53,7 @@ export class UserWService {
 	pedido:any={};
 	partner:boolean;
 	queue:any[]=[];
+	quoteSubmitted:boolean=false;
 	recargo:boolean=false;
 	selectorA:boolean;
 	selectorB:boolean;

@@ -1,8 +1,4 @@
-         <!-- <link rel="stylesheet" href="./assets/assetsmenu/css/vendor/bootstrap.min.css"> -->
-       
-        <!-- <link rel="stylesheet" href="assets/css/vendor/helper.css"> -->
-        <!-- <link rel="stylesheet" href="assets/css/plugins/plugins.css"> -->
-        <!-- <link rel="stylesheet" href="./assets/assetsmenu/css/style.css"> -->
+
  <div >
             <!--Header section start-->
             <header class="header header-transparent header-sticky d-lg-block d-none">
@@ -12,7 +8,12 @@
                             <!--Menu start-->
                             <div class=" d-flex">
                                 <nav class="main-menu main-menu-two">
-                                    <ul>
+                                    <ul [hidden]="!router.url.includes('/checkout') ">
+                                        <li><a href="#">Cancel</a>
+                                        </li>
+                                      
+                                    </ul>  
+                                    <ul [hidden]="router.url.includes('/checkout') ">
                                         <li><a routerLink="">Home</a>
                                         </li>
                                        <li><a >About</a>
@@ -77,7 +78,7 @@
                 <div class="offcanvas-wrapper">
                     <div class="offcanvas-inner-content">                 
                          <nav class="offcanvas-navigation">
-                            <ul>
+                            <ul [hidden]="router.url.includes('/checkout') ">
                                 <li class="menu-item-has-children">
                                     <a routerLink="">Home</a>
                                 </li>
@@ -106,6 +107,13 @@
                                     <a routerLink="contact">Contact</a>
                                 </li>
                             </ul>
+ <ul [hidden]="!router.url.includes('/checkout') ">
+                                <li class="menu-item-has-children">
+                                    <a href="#">Cancel</a>
+                                </li>
+                               
+                            </ul>
+
                         </nav>
                         <div class="offcanvas-widget-area">
                         <!--     <div class="off-canvas-contact-widget">

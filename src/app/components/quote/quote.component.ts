@@ -67,6 +67,29 @@ export class QuoteComponent implements OnInit {
     private formBuilder: FormBuilder
   	) { }
 
+
+       loadAPI = null;  
+
+  url = "assets/assetspenguins/js/jquery.nice-select.min.js";
+  url2 = "assets/assetspenguins/js/script.js";
+ public loadScript() {
+    let node = document.createElement("script");
+    node.src = this.url;
+    node.type = "text/javascript";
+    node.async = true;
+    node.charset = "utf-8";
+    document.getElementsByTagName("head")[0].appendChild(node);
+  }
+  public loadScript2() {
+    let node = document.createElement("script");
+    node.src = this.url2;
+    node.type = "text/javascript";
+    node.async = true;
+    node.charset = "utf-8";
+    document.getElementsByTagName("head")[0].appendChild(node);
+  }
+
+
   ngFormAddOrder: FormGroup;
   submitted = false;
   appointmentSubmitted = false;
@@ -228,9 +251,9 @@ calculate(index){
   }
     calculateHouse(parametro){
     this._uw.order.amount=0;
-     if (parametro=="Basic"){this.serviceOptions2[0].serviceCost=99,99;}
-    if (parametro=="Medium"){this.serviceOptions2[0].serviceCost=149,99;}
-    if (parametro=="Premium"){this.serviceOptions2[0].serviceCost=199,99;}
+     if (parametro=="Basic"){this.serviceOptions2[0].serviceCost=99.99;}
+    if (parametro=="Medium"){this.serviceOptions2[0].serviceCost=149.99;}
+    if (parametro=="Premium"){this.serviceOptions2[0].serviceCost=199.99;}
     this._uw.order.amount=this.serviceOptions2[this._uw.order.serviceSelectedId].serviceCost;
   }
   recalcular(){
@@ -339,6 +362,63 @@ calculate(index){
     this.cleanersSeted=true;
   
   }
+
+  setAppointment(){
+    this._uw.appointmentSubmitted=true;
+    this._uw.quoteSubmitted=false;
+    this.order = this.ngFormAddOrder.value;
+    this.order.status="new";
+    this.order.quoteIdPre=this.aleatorio(10000,99999);
+    let quoteIdString = this.order.quoteIdPre.toString();
+    this.order.quoteId=quoteIdString;
+    this._uw.order.quoteId=this.order.quoteId;
+    this._uw.order.name=this.order.name;
+    this._uw.order.phone=this.order.phone;
+    this._uw.order.address=this.order.address;
+    this._uw.order.email=this.order.email;
+    this.router.navigate(['/checkout']);
+  }
+
+  setQuote(){
+    this._uw.quoteSubmitted=true;
+    this._uw.appointmentSubmitted=false;
+    this.order = this.ngFormAddOrder.value;
+    this.order.status="new";
+    this.order.quoteIdPre=this.aleatorio(10000,99999);
+    let quoteIdString = this.order.quoteIdPre.toString();
+    this.order.quoteId=quoteIdString;
+    this.order.steeps=[
+      {steep:true},
+      {steep:false},
+      {steep:false},
+      {steep:false}
+    ];
+    // this.order.total=(this._uw.subTotal*this._uw.currency);
+    this.order.car=this._uw.car;
+    this._uw.order.name=this.order.name;
+    this._uw.order.phone=this.order.phone;
+    this._uw.order.address=this.order.address;
+    this._uw.order.email=this.order.email;
+    this._uw.order.subject="You have a new quote request";
+    this._uw.order.subjectA2U="The result of your quote is";
+    this._uw.order.quoteId=this.order.quoteId;
+    this._uw.order.adminName="Jessica",
+    // this._uw.order.amount=100,
+    this._uw.order.clientEmail=this._uw.order.email,
+    // this._uw.order.email="penguinscleaningservice@gmail.com",
+    this._uw.order.email="penguinscleaningservice@gmail.com",
+    // console.log("uw order hoursPerDay" +this._uw.order.hoursPerDay);
+    // this._uw.order.adminName=this._uw.info[0].adminName;
+    // this._uw.pedido.adminEmail=this._uw.info[0].adminEmail;
+    this.dataApiService.sendMailNewQuoteAA(this._uw.order).subscribe();
+    this.dataApiService.sendMailNewQuoteAU(this._uw.order).subscribe();
+    // this.dataApi.sendMailNewQuoteA2U(this._uw.order).subscribe();
+    // console.log("enviando...");
+    this.dataApiService.saveOrder(this._uw.order).subscribe(
+      );
+  }
+
+
  public aleatorio(a,b) {
     return Math.round(Math.random()*(b-a)+parseInt(a));
   }
@@ -349,52 +429,23 @@ calculate(index){
           this._uw.errorFormSendOrder=true;
         return;
             } 
+
       this._uw.errorFormSendOrder=false;
-      this.order = this.ngFormAddOrder.value;
-      this.order.status="new";
-
-      this.order.quoteIdPre=this.aleatorio(10000,99999);
-      let quoteIdString = this.order.quoteIdPre.toString();
-      this.order.quoteId=quoteIdString;
-      this.order.steeps=[
-        {steep:true},
-        {steep:false},
-        {steep:false},
-        {steep:false}
-      ];
-      // this.order.total=(this._uw.subTotal*this._uw.currency);
-      this.order.car=this._uw.car;
-      this._uw.order.name=this.order.name;
-      this._uw.order.phone=this.order.phone;
-      this._uw.order.address=this.order.address;
-      this._uw.order.email=this.order.email;
-      this._uw.order.subject="You have a new quote request";
-      this._uw.order.subjectA2U="The result of your quote is";
-      this._uw.order.quoteId=this.order.quoteId;
-      this._uw.order.adminName="Jessica",
-      // this._uw.order.amount=100,
-      this._uw.order.clientEmail=this._uw.order.email,
-      this._uw.order.email="penguinscleaningservice@gmail.com",
-      // this._uw.order.email="penguinscleaningservice@gmail.com",
-      // console.log("uw order hoursPerDay" +this._uw.order.hoursPerDay);
-      // this._uw.order.adminName=this._uw.info[0].adminName;
-      // this._uw.pedido.adminEmail=this._uw.info[0].adminEmail;
-
-
-      this.dataApiService.sendMailNewQuoteAA(this._uw.order).subscribe();
-      this.dataApiService.sendMailNewQuoteAU(this._uw.order).subscribe();
       
-
-      // this.dataApi.sendMailNewQuoteA2U(this._uw.order).subscribe();
-      // console.log("enviando...");
-      this.dataApiService.saveOrder(this._uw.order).subscribe(
-        );
-    
+     
     }
 
 
 
   ngOnInit() {
+       if (this._uw.loaded==true){
+      this.loadAPI = new Promise(resolve => {
+        this.loadScript();
+        this.loadScript2();
+        // this.loadScript3();
+        });
+      }
+    this._uw.loaded=true;
     this.ngFormAddOrder = this.formBuilder.group({
       name: ['', [Validators.required]] ,
       phone:['',[Validators.required]], 

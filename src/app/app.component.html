@@ -1,6 +1,6 @@
 
-<app-topbar></app-topbar>
-<app-menu></app-menu>
+<app-topbar [hidden]="router.url.includes('/checkout') "></app-topbar>
+<app-menu ></app-menu>
 <router-outlet></router-outlet>
 <app-footer></app-footer>
  
