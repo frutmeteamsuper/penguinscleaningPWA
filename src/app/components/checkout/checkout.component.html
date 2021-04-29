@@ -13,12 +13,12 @@
                                     <div class="single-item">
                                         <figure class="image-box"><img src="assets/assetspenguins/images/background/clean.jpg" alt=""></figure>
                                         <p>{{_uw.order.serviceType}} cleaning ({{_uw.order.houseSize}})</p>
-                                        <h6>${{_uw.order.amount }}</h6>
+                                        <h6>${{_uw.order.amount |  number:'1.0-2' }}</h6>
                                     </div>
                                    
                                 </div>
                                 <ul class="total-box clearfix">
-                                    <li>Sub total<span>${{_uw.order.amount }}</span></li>
+                                    <li>Sub total<span>${{_uw.order.amount |  number:'1.0-2' }}</span></li>
                                     <li>HST  <span>${{_uw.order.amount *12/100 |  number:'1.0-2' }}</span></li>
                                    
                                 </ul>

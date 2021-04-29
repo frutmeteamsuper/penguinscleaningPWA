@@ -35,6 +35,15 @@ export class DataApiService {
 		.put<TixInterface>(url_api, tix)
 		.pipe(map(data => data));
 	}
+	charge(cantidad, tokenId, description,receipt_email){
+		return this.http.post('http://localhost:3000/stripe_checkout',{
+			stripeToken: tokenId,
+			cantidad: cantidad,
+			description: description,
+			receipt_email: receipt_email
+		}).toPromise();
+
+	}
 	sendMailNewQuoteAA(order){
 		const url_api='https://email.penguinscleaning.ca:3005/newQuoteAA';
 		return this.http

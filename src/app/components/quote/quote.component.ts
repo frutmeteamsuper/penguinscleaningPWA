@@ -376,6 +376,8 @@ calculate(index){
     this._uw.order.phone=this.order.phone;
     this._uw.order.address=this.order.address;
     this._uw.order.email=this.order.email;
+    this._uw.order.amount=this._uw.order.amount+(this._uw.order.amount*12/100);
+  
     this.router.navigate(['/checkout']);
   }
 
@@ -403,7 +405,6 @@ calculate(index){
     this._uw.order.subjectA2U="The result of your quote is";
     this._uw.order.quoteId=this.order.quoteId;
     this._uw.order.adminName="Jessica",
-    // this._uw.order.amount=100,
     this._uw.order.clientEmail=this._uw.order.email,
 
 

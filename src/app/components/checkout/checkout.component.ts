@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, NgZone, ViewChild } from '@angular/core';
 import { UserWService } from '../../services/user-w.service';
+import { DataApiService } from '../../services/data-api.service';
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -47,13 +48,18 @@ setCCInfo(){
 	this.ccInfo=true;
 }
 
-constructor(private ngZone: NgZone,
-	    public _uw:UserWService ) { }
+constructor(
+	private ngZone: NgZone,
+	private dataApi: DataApiService,
+	public _uw:UserWService ) { }
 
 async onClick(){
+	this._uw.order.serviceDescription= this._uw.order.serviceType+" cleaning "+"("+this._uw.order.houseSize+")";
  const {token, error} = await stripe.createToken(this.card);
  if (token){
- 	console.log(token);
+ 	// console.log(token);
+ 	const response = await this.dataApi.charge(((this._uw.order.amount)+(this._uw.order.amount*12/100)), token.id, this._uw.order.serviceDescription,this._uw.order.email);
+ 	console.log(response);
  }else{
  	this.ngZone.run(()=>this.cardError=error.message);
  }
