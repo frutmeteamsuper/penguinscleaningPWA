@@ -36,7 +36,8 @@ export class DataApiService {
 		.pipe(map(data => data));
 	}
 	charge(cantidad, tokenId, description,receipt_email){
-		return this.http.post('http://localhost:3000/stripe_checkout',{
+		// return this.http.post('http://localhost:3000/stripe_checkout',{
+		return this.http.post('https://db.penguinscleaning.ca:3030/stripe_checkout',{
 			stripeToken: tokenId,
 			cantidad: cantidad,
 			description: description,
