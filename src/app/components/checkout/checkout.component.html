@@ -5,7 +5,7 @@
         <section class="checkout-page-section">
             <div class="auto-container">
                 <div class="order-information">
-                    <div class="row clearfix">                         
+                    <div class="row clearfix"  [hidden]="sent">                         
                         <div class="col-lg-6 col-md-12 col-sm-12 right-column">
                             <div class="order-summary">
                                 <h4>Order Summary</h4>
@@ -75,6 +75,28 @@
                             </div>
                         </div>
 
+                    </div>
+                    <div class="row clearfix"  [hidden]="!sent">
+                        <div class="col-lg-12 col-md-12 col-sm-12 "   style="text-align: center;">
+                           <div [hidden]="!sent">
+                              <i class="fa fa-check" style="font-size:71px;color: green;align-content: center;text-align: center;"></i>
+                              <span style="margin:30px;font-size: 30px;color: #17ab4b;text-align: center;align-content: center !important;align-items: center;">
+                                Payment succeeded
+                                </span>
+                                     <div>
+                                          <button (click)="end()">Ok</button>
+                                        </div>
+                              </div>
+                              <div [hidden]="sent">
+                              <i class="fa fa-close" style="font-size:71px;color: red;align-content: center;text-align: center;"></i>
+                              <span style="margin:30px;font-size: 30px;color: red;text-align: center;align-content: center !important;align-items: center;">
+                                An error has occurred, please try again
+                                </span>
+                                 <div>
+                                          <button (click)="try()">Try again</button>
+                                        </div>
+                              </div>
+                        </div>
                     </div>
                 </div>
 <!--                 <div class="payment-method">
