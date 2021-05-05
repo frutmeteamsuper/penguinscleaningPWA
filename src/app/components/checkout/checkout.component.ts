@@ -1,6 +1,8 @@
 import { AfterViewInit, Component, ElementRef, NgZone, ViewChild } from '@angular/core';
 import { UserWService } from '../../services/user-w.service';
 import { DataApiService } from '../../services/data-api.service';
+import { XunkCalendarModule } from '../../../xunk-calendar/xunk-calendar.module';
+
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -12,8 +14,14 @@ export class CheckoutComponent implements AfterViewInit {
 	card:any;
 	cardError:string;
 	ccInfo:boolean=false;
+  public selDate = { date:1, month:1, year:1 };
+
+  ngOnInit() {
+this.selDate = XunkCalendarModule.getToday();  
+  }
 
   ngAfterViewInit() {
+  	  
   	this.card=elements.create('card',{
 	  style: {
 	    base: {
@@ -44,6 +52,8 @@ if (error){
 	}
   }
 
+
+
 setCCInfo(){
 	this.ccInfo=true;
 }
@@ -51,18 +61,18 @@ setCCInfo(){
 constructor(
 	private ngZone: NgZone,
 	private dataApi: DataApiService,
-	public _uw:UserWService ) { }
-
-async onClick(){
-	this._uw.order.serviceDescription= this._uw.order.serviceType+" cleaning "+"("+this._uw.order.houseSize+")";
- const {token, error} = await stripe.createToken(this.card);
- if (token){
- 	// console.log(token);
- 	const response = await this.dataApi.charge(((this._uw.order.amount)+(this._uw.order.amount*12/100)), token.id, this._uw.order.serviceDescription,this._uw.order.email);
- 	console.log(response);
- }else{
- 	this.ngZone.run(()=>this.cardError=error.message);
- }
-}
-
+	public _uw:UserWService 
+	) {}
+	async onClick(){
+		this._uw.order.date=this.selDate.date+" /"+(this.selDate.month+1)+" /"+this.selDate.year;
+		this._uw.order.serviceDescription= this._uw.order.serviceType+" cleaning "+"("+this._uw.order.houseSize+")";
+ 		const {token, error} = await stripe.createToken(this.card);
+ 		if (token){
+ 			// console.log(token);
+ 			const response = await this.dataApi.charge(((this._uw.order.amount)+(this._uw.order.amount*12/100)), token.id, this._uw.order.serviceDescription,this._uw.order.email);
+ 			console.log(response);
+ 		}else{
+ 			this.ngZone.run(()=>this.cardError=error.message);
+ 		}
+	}
 }

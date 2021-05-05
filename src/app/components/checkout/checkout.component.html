@@ -18,12 +18,12 @@
                                    
                                 </div>
                                 <ul class="total-box clearfix">
-                                    <li>Sub total<span>${{_uw.order.amount |  number:'1.0-2' }}</span></li>
-                                    <li>HST  <span>${{_uw.order.amount *12/100 |  number:'1.0-2' }}</span></li>
+                                    <li>Sub total<span>${{_uw.order.subtotal |  number:'1.0-2' }}</span></li>
+                                    <li>HST  <span>${{_uw.order.subtotal *12/100 |  number:'1.0-2' }}</span></li>
                                    
                                 </ul>
                                 <div class="tax-box">
-                                    <h5>Total (Including Tax)<span>${{(_uw.order.amount *12/100)+_uw.order.amount |  number:'1.0-2' }}</span></h5>
+                                    <h5>Total (Including Tax)<span>${{_uw.order.amount |  number:'1.0-2' }}</span></h5>
                                 </div>
                             
                             </div>
@@ -32,11 +32,13 @@
                         <div class="col-lg-6 col-md-12 col-sm-12 left-column" [hidden]="ccInfo">
                             <div class="information-inner">
                                 <div class="contact-information">
-                                    <h3>Date</h3>
-                                    <div class="field-input">
+                                    <h3>Date <span style="font-weight: 100; margin-left: 20px;">{{ selDate.year }}-{{ selDate.month + 1}}-{{ selDate.date }} </span></h3>
+
+                                <!--     <div class="field-input">
                                         <input type="text" name="date" placeholder="MM/DD" required="">
-                                    </div>
-                                  
+                                    </div> -->
+                                    <p></p>
+                                  <xunk-calendar [selectedDate]="selDate"></xunk-calendar>
                                     
                                 </div>
                                 <div class="acc-content">

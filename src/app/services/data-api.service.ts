@@ -67,7 +67,7 @@ export class DataApiService {
 		const url_api = 'https://db.penguinscleaning.ca:3022/api/tixes?filter[where][status]=activated';
 		return this.http.get(url_api);
 	}
- 		getTamano(){
+ 	getTamano(){
 		const url_api = 'https://db.penguinscleaning.ca:3022/api/tixes?filter[where][status]=activated';
 		return (this.tixs = this.http.get(url_api));
 	}
@@ -121,10 +121,6 @@ export class DataApiService {
 		const url_api = `https://db.penguinscleaning.ca:3022/api/order?filter[where][npedido]=${npedido}`;
 		this.order = this.http.get(url_api);
 		return (this.order);
-
-		// return this.http.get(url_api);
-
-		// return this.http.get(url_api);
 	}
 
 		// let indice = id;

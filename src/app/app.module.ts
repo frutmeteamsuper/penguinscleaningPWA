@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NgSelectModule } from '@ng-select/ng-select';
 
-
+import { XunkCalendarModule } from '../xunk-calendar/xunk-calendar.module';
 import { HttpModule } from '@angular/http';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { ArchwizardModule } from 'angular-archwizard';
@@ -121,6 +121,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     MatTableModule,
     ArchwizardModule,
     CarouselModule,
+    XunkCalendarModule,
     FilePickerModule,
     MatRadioModule,
   ],
