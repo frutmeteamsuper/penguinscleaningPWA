@@ -40,6 +40,7 @@ export class QuoteComponent implements OnInit {
   serviceOptions = [
     'Houses',
     'Hotel, Motel, Chalets, Airbnb.',
+    'Deep house cleaning service',
     'Commercial offices: Government, Bank, Medical, Others.',
     'Events, Before event, After event.',
     'Gym, Post-construction, Daycares, Restaurant and bar.',
@@ -50,11 +51,12 @@ export class QuoteComponent implements OnInit {
   serviceOptions2 = [
       { serviceCost: 0, id: 1, name: 'Houses' },
       { serviceCost: 35, id: 2, name: 'Hotel, Motel, Chalets, Airbnb.' },
-      { serviceCost: 30, id: 3, name: 'Commercial offices: Government, Bank, Medical...' },
-      { serviceCost: 30, id: 4, name: 'Events, Before event, After event.' },
-      { serviceCost: 35, id: 5, name: 'Gym, Post-construction, Daycares, Restaurant ...' },
-      { serviceCost: 30, id: 6, name: 'Commercial spaces cleaning.' },
-      { serviceCost: 40, id: 7, name: 'Health and medic centers.' },
+      { serviceCost: 30, id: 3, name: 'Deep house cleaning service' },
+      { serviceCost: 30, id: 4, name: 'Commercial offices: Government, Bank, Medical...' },
+      { serviceCost: 30, id: 5, name: 'Events, Before event, After event.' },
+      { serviceCost: 35, id: 6, name: 'Gym, Post-construction, Daycares, Restaurant ...' },
+      { serviceCost: 30, id: 7, name: 'Commercial spaces cleaning.' },
+      { serviceCost: 40, id: 8, name: 'Health and medic centers.' },
   ];
 
   constructor(
@@ -156,6 +158,7 @@ calculate(index){
         this._uw.order.serviceType="Hotel, Motel, Chalets, Airbnb.";
         this.selected=true;
         this.houseSelected=false;
+         this.subserviceSeted=false;
         this._uw.order.serviceSelectedId=index;
         this.msProperty="Property or Space: ";
          this.subservices = [
@@ -168,6 +171,24 @@ calculate(index){
           this.subservice="Select one";
            this.healtSelected=false;
       }  
+
+       if(item.name=='Deep house cleaning service'){
+        this.serviceSelected=item.name;
+        this._uw.order.serviceType="Deep house cleaning service";
+        this.selected=true;
+        this.houseSelected=false;
+         this.subserviceSeted=false;
+
+        this._uw.order.serviceSelectedId=index;
+        // this.msProperty="Property or Space: ";
+         this.subservices = [
+            "Move in",
+            "Move out"          ];
+          this.subserviceSelected=true;
+          this.subservice="Select one";
+          this.healtSelected=false;
+      }
+
       if(item.name=='Commercial offices: Government, Bank, Medical...'){
         this.serviceSelected="Commercial offices: Government, Bank, Medical...";
         this._uw.order.serviceType="Commercial offices: Government, Bank, Medical, Others.";
@@ -190,6 +211,7 @@ calculate(index){
         this._uw.order.serviceType="Events, Before event, After event.";
         this.selected=true;
         this.houseSelected=false;
+         this.subserviceSeted=false;
         this._uw.order.serviceSelectedId=index;
         this.msProperty="Property or Space: ";
          this.subservices = [
@@ -201,11 +223,13 @@ calculate(index){
           this.subservice="Select one";
           this.healtSelected=false;
       }
+
       if(item.name=='Gym, Post-construction, Daycares, Restaurant ...'){
         this.serviceSelected="Gym, Post-construction, Daycares, Restaurant ...";
         this._uw.order.serviceType="Gym, Post-construction, Daycares, Restaurant and bar.";
         this.selected=true;
         this.houseSelected=false;
+         this.subserviceSeted=false;
         this._uw.order.serviceSelectedId=index;
         this.msProperty="Property or Space: ";
          this.subservices = [
@@ -226,7 +250,7 @@ calculate(index){
         this._uw.order.serviceSelectedId=index;
         this.subserviceSelected=true;
         this.subservice="Select one";
-        this.healtSelected=false;
+        this.healtSelected=true;
       }
       if(item.name=='Health and medic centers.'){
         this.serviceSelected=item.name;
@@ -247,6 +271,7 @@ calculate(index){
       this.daysSeted=false;  
       this.hoursSeted=false;
       this.cleanersSeted=false;
+      this.subserviceSeted=false;
       this.calculate(index);
   }
     calculateHouse(parametro){
