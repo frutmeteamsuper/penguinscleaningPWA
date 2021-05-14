@@ -51,6 +51,12 @@ export class DataApiService {
 		.post(url_api, order)
 		.pipe(map(data => data));
 	}
+	sendMailNewAppointmentAA(order){
+		const url_api='https://email.penguinscleaning.ca:3005/newAppointmentAA';
+		return this.http
+		.post(url_api, order)
+		.pipe(map(data => data));
+	}
 	sendMailNewContactAA(contact){
 		const url_api='https://email.penguinscleaning.ca:3005/newContactAA';
 		return this.http
@@ -59,6 +65,12 @@ export class DataApiService {
 	}
 	sendMailNewQuoteAU(order){
 		const url_api='https://email.penguinscleaning.ca:3005/newQuoteAU';
+		return this.http
+		.post(url_api, order)
+		.pipe(map(data => data));
+	}
+	sendMailNewAppointmentAU(order){
+		const url_api='https://email.penguinscleaning.ca:3005/newAppointmentAU';
 		return this.http
 		.post(url_api, order)
 		.pipe(map(data => data));

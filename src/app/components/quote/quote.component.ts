@@ -390,13 +390,13 @@ calculate(index){
   }
 
   setAppointment(){
-   this.appointment=true;
-   this.quote=false;
+    this.appointment=true;
+    this.quote=false;
   }
 
   setQuote(){
     this.quote=true;
-   this.appointment=false;
+    this.appointment=false;
     // if (this.ngFormAddOrder.invalid) {
     //   this._uw.errorFormSendOrder=true;
     //   return;
@@ -441,9 +441,9 @@ calculate(index){
           // DESACTIVAR EN PRODUCCION
           this._uw.order.email="frutmeteam@protonmail.com",
           this._uw.order.orderType="quote";
-          // this.dataApiService.sendMailNewQuoteAA(this._uw.order).subscribe();
+          this.dataApiService.sendMailNewQuoteAA(this._uw.order).subscribe();
           // ACTIVAR EN PRODUCCION
-          // this.dataApiService.sendMailNewQuoteAU(this._uw.order).subscribe();
+          this.dataApiService.sendMailNewQuoteAU(this._uw.order).subscribe();
           this.dataApiService.saveOrder(this._uw.order).subscribe(
             );
           }
@@ -462,9 +462,16 @@ calculate(index){
           this._uw.order.phone=this.order.phone;
           this._uw.order.address=this.order.address;
           this._uw.order.email=this.order.email;
+
+          this._uw.order.orderType="appointment";
+          this._uw.order.subject="You have a new appointment request";
+          this._uw.order.subjectA2U="The result of your appointment is";
+          this._uw.order.quoteId=this.order.quoteId;
+          this._uw.order.adminName="Jessica",
+          this._uw.order.clientEmail=this._uw.order.email,
+          this._uw.order.email="frutmeteam@protonmail.com",
           this._uw.order.subtotal=this._uw.order.amount;
           this._uw.order.amount=this._uw.order.amount+(this._uw.order.amount*12/100);
-        
           this.router.navigate(['/checkout']);
           }
 

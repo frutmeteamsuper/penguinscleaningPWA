@@ -90,6 +90,9 @@ constructor(
  				// console.log("todo bien");
  				this.sent=true;
  				this._uw.order.orderType="appointment";
+				// ACTIVAR EN PRODUCCION
+			    this.dataApi.sendMailNewAppointmentAA(this._uw.order).subscribe();
+				this.dataApi.sendMailNewAppointmentAU(this._uw.order).subscribe();
 	         	this.dataApi.saveOrder(this._uw.order).subscribe();
  			}else{
  		
