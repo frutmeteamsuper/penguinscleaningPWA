@@ -68,7 +68,8 @@ export class QuoteComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder
     ) { }
-
+    quote:boolean= false;
+    appointment:boolean= false;
 
        loadAPI = null;  
 
@@ -389,64 +390,18 @@ calculate(index){
   }
 
   setAppointment(){
-    this._uw.appointmentSubmitted=true;
-    this._uw.quoteSubmitted=false;
-    this.order = this.ngFormAddOrder.value;
-    this.order.status="new";
-    this.order.quoteIdPre=this.aleatorio(10000,99999);
-    let quoteIdString = this.order.quoteIdPre.toString();
-    this.order.quoteId=quoteIdString;
-    this._uw.order.quoteId=this.order.quoteId;
-    this._uw.order.name=this.order.name;
-    this._uw.order.phone=this.order.phone;
-    this._uw.order.address=this.order.address;
-    this._uw.order.email=this.order.email;
-    this._uw.order.subtotal=this._uw.order.amount;
-    this._uw.order.amount=this._uw.order.amount+(this._uw.order.amount*12/100);
-  
-    this.router.navigate(['/checkout']);
+   this.appointment=true;
+   this.quote=false;
   }
 
   setQuote(){
-    this._uw.quoteSubmitted=true;
-    this._uw.appointmentSubmitted=false;
-    this.order = this.ngFormAddOrder.value;
-    this.order.status="new";
-    this.order.quoteIdPre=this.aleatorio(10000,99999);
-    let quoteIdString = this.order.quoteIdPre.toString();
-    this.order.quoteId=quoteIdString;
-    this.order.steeps=[
-      {steep:true},
-      {steep:false},
-      {steep:false},
-      {steep:false}
-    ];
-    // this.order.total=(this._uw.subTotal*this._uw.currency);
-    this.order.car=this._uw.car;
-    this._uw.order.name=this.order.name;
-    this._uw.order.phone=this.order.phone;
-    this._uw.order.address=this.order.address;
-    this._uw.order.email=this.order.email;
-    this._uw.order.subject="You have a new quote request";
-    this._uw.order.subjectA2U="The result of your quote is";
-    this._uw.order.quoteId=this.order.quoteId;
-    this._uw.order.adminName="Jessica",
-    this._uw.order.clientEmail=this._uw.order.email,
+    this.quote=true;
+   this.appointment=false;
+    // if (this.ngFormAddOrder.invalid) {
+    //   this._uw.errorFormSendOrder=true;
+    //   return;
+    // } 
 
-
-    // ACTIVAR EN PRODUCCION
-    // this._uw.order.email="penguinscleaningservice@gmail.com",
-    
-
-    // DESACTIVAR EN PRODUCCION
-    this._uw.order.email="frutmeteam@protonmail.com",
-
-    this.dataApiService.sendMailNewQuoteAA(this._uw.order).subscribe();
-    // ACTIVAR EN PRODUCCION
-    // this.dataApiService.sendMailNewQuoteAU(this._uw.order).subscribe();
-
-    this.dataApiService.saveOrder(this._uw.order).subscribe(
-      );
   }
 
 
@@ -460,6 +415,58 @@ calculate(index){
           this._uw.errorFormSendOrder=true;
         return;
             } 
+        if (this.quote)
+          {
+            console.log("quote selected");
+          this._uw.quoteSubmitted=true;
+          this._uw.appointmentSubmitted=false;
+          this.order = this.ngFormAddOrder.value;
+          this.order.status="new";
+          this.order.quoteIdPre=this.aleatorio(10000,99999);
+          let quoteIdString = this.order.quoteIdPre.toString();
+          this.order.quoteId=quoteIdString;
+          this.order.car=this._uw.car;
+          this._uw.order.name=this.order.name;
+          this._uw.order.phone=this.order.phone;
+          this._uw.order.address=this.order.address;
+          this._uw.order.email=this.order.email;
+          this._uw.order.subject="You have a new quote request";
+          this._uw.order.subjectA2U="The result of your quote is";
+          this._uw.order.quoteId=this.order.quoteId;
+          this._uw.order.adminName="Jessica",
+          this._uw.order.clientEmail=this._uw.order.email,
+          // ACTIVAR EN PRODUCCION
+          // this._uw.order.email="penguinscleaningservice@gmail.com",
+        
+          // DESACTIVAR EN PRODUCCION
+          this._uw.order.email="frutmeteam@protonmail.com",
+          this._uw.order.orderType="quote";
+          // this.dataApiService.sendMailNewQuoteAA(this._uw.order).subscribe();
+          // ACTIVAR EN PRODUCCION
+          // this.dataApiService.sendMailNewQuoteAU(this._uw.order).subscribe();
+          this.dataApiService.saveOrder(this._uw.order).subscribe(
+            );
+          }
+        if (this.appointment)
+          {
+            console.log("appointment selected");
+          this._uw.appointmentSubmitted=true;
+          this._uw.quoteSubmitted=false;
+          this.order = this.ngFormAddOrder.value;
+          this.order.status="new";
+          this.order.quoteIdPre=this.aleatorio(10000,99999);
+          let quoteIdString = this.order.quoteIdPre.toString();
+          this.order.quoteId=quoteIdString;
+          this._uw.order.quoteId=this.order.quoteId;
+          this._uw.order.name=this.order.name;
+          this._uw.order.phone=this.order.phone;
+          this._uw.order.address=this.order.address;
+          this._uw.order.email=this.order.email;
+          this._uw.order.subtotal=this._uw.order.amount;
+          this._uw.order.amount=this._uw.order.amount+(this._uw.order.amount*12/100);
+        
+          this.router.navigate(['/checkout']);
+          }
 
       this._uw.errorFormSendOrder=false;
       

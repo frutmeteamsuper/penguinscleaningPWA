@@ -218,7 +218,7 @@
                             </div>
 
 
-                            <div class="message-btn" [hidden]="quoteSubmitted || houseSelected " >
+                            <div class="message-btn" [hidden]="quoteSubmitted && !_uw.errorFormSendOrder || houseSelected " >
                                 <button type="submit" (click)="setQuote()">Get a quote</button>
                             </div>
                               <div class="message-btn" [hidden]="appointmentSubmitted  || !houseSelected " >
