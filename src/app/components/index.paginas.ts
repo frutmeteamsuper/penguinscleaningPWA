@@ -26,4 +26,4 @@ export { CheckoutComponent } from "./checkout/checkout.component";
 export { FooterComponent } from "./footer/footer.component";
 export { CompanyComponent } from "./company/company.component";
 export { PagoComponent } from "./pago/pago.component";
-export { PrecheckComponent } from "./precheck/precheck.component";
+// export { PrecheckComponent } from "./precheck/precheck.component";
