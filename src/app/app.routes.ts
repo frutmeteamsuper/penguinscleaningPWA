@@ -25,7 +25,7 @@ import {
 	ProjectthreeComponent,
 	ProjectfourComponent,
 	GalleryComponent,
-	// PrecheckComponent,
+	PrecheckComponent,
 	CheckoutComponent
 
 	}from "./components/index.paginas";
@@ -59,7 +59,7 @@ const app_routes: Routes = [
 	{path:'carpet',component:CarpetComponent},
 	{path:'covid',component:CovidComponent},
 	{path:'pago',component:PagoComponent},
-	// {path:'precheck',component:PrecheckComponent},
+	{path:'precheck',component:PrecheckComponent},
 	{path:'**',pathMatch:'full',redirectTo:''}
 	];
 	export const app_routing = RouterModule.forRoot(app_routes);

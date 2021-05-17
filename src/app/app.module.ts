@@ -71,7 +71,7 @@ import { ProjectthreeComponent } from './components/projectthree/projectthree.co
 import { ProjectfourComponent } from './components/projectfour/projectfour.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
-// import { PrecheckComponent } from './components/precheck/precheck.component';
+import { PrecheckComponent } from './components/precheck/precheck.component';
 
 @NgModule({
   declarations: [
@@ -104,7 +104,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     ProjectfourComponent,
     GalleryComponent,
     CheckoutComponent,
-    // PrecheckComponent,
+    PrecheckComponent,
   ],
   imports: [
     BrowserModule,
