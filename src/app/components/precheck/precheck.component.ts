@@ -1,50 +1,56 @@
-import { AfterViewInit, Component, ElementRef, NgZone, ViewChild } from '@angular/core';
+import { OnInit,  Component, ElementRef, NgZone, ViewChild } from '@angular/core';
 import { UserWService } from '../../services/user-w.service';
 import { DataApiService } from '../../services/data-api.service';
 import { XunkCalendarModule } from '../../../xunk-calendar/xunk-calendar.module';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
+import { OrderInterface } from '../../models/order-interface';
+import { FormBuilder, FormGroup,  Validators } from '@angular/forms';
+import { ValidationError } from '../../../assets/file-picker/src/lib/validation-error.model';
 
 @Component({
-  selector: 'app-checkout',
-  templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.css']
+  selector: 'app-precheck',
+  templateUrl: './precheck.component.html',
+  styleUrls: ['./precheck.component.css']
 })
-export class CheckoutComponent implements AfterViewInit {
+
+
+export class PrecheckComponent implements OnInit {
 
 	@ViewChild('cardInfo', {static: false}) cardInfo:ElementRef;
+
+constructor(
+	private ngZone: NgZone,
+	private dataApi: DataApiService,
+	public _uw:UserWService,
+	private location: Location,
+    private formBuilder: FormBuilder,
+    private router: Router
+	) {}
+
 	card:any;
 	cardError:string;
 	ccInfo:boolean=false;
 	sent:boolean=false;
 	succeeded:boolean=false;
-	hourSeted:boolean=false;
-	msg:string="";
-
-  public selDate = { date:1, month:1, year:1 };
-
-
-    serviceHours = [
-    '9:00 AM',
-    '10:00 AM',
-    '11:00 AM',
-    '12:00 PM',
-    '1:00 PM',
-    '2:00 PM',
-    '3:00 PM',
-    '4:00 PM',
-    '5:00 PM',
-    '6:00 PM',
-    '7:00 PM'
-    ];
+  	public selDate = { date:1, month:1, year:1 };
+  	ngFormAddOrder: FormGroup;
+  	submitted = false;
 
   ngOnInit() {
-this.selDate = XunkCalendarModule.getToday();  
-this._uw.order.time="Please select time";
-  }
+  	    	 this.ngFormAddOrder = this.formBuilder.group({
+      name: ['', [Validators.required]] ,
+      phone:['',[Validators.required]], 
+      email:['',[Validators.required]], 
+      address:['',[Validators.required]]
+         });
 
+this.selDate = XunkCalendarModule.getToday();  
+  }
+  get fval2() {
+    return this.ngFormAddOrder.controls;
+  }
   ngAfterViewInit() {
-  	  
   	this.card=elements.create('card',{
 	  style: {
 	    base: {
@@ -80,11 +86,6 @@ if (error){
 setCCInfo(){
 	this.ccInfo=true;
 }
-setHour(parameter){
-	this._uw.order.time=parameter;
-	this.hourSeted=true;
-	this.msg="Time: ";
-}
 try(){
 	 this.router.navigate(['/quote']);
 }
@@ -92,14 +93,7 @@ end(){
 	 this.router.navigate(['']);
 }
 
-constructor(
-	private ngZone: NgZone,
-	private dataApi: DataApiService,
-	public _uw:UserWService,
-	private location: Location,
 
-    private router: Router
-	) {}
 	async onClick(){
 		let response:any;
 		this._uw.order.date=this.selDate.date+" /"+(this.selDate.month+1)+" /"+this.selDate.year;

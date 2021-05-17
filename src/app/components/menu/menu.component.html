@@ -8,12 +8,12 @@
                             <!--Menu start-->
                             <div class=" d-flex">
                                 <nav class="main-menu main-menu-two">
-                                    <ul [hidden]="!router.url.includes('/checkout') ">
+                                    <ul [hidden]="!router.url.includes('/checkout') || !router.url.includes('/precheck') ">
                                         <li><a href="#">Cancel</a>
                                         </li>
                                       
                                     </ul>  
-                                    <ul [hidden]="router.url.includes('/checkout') ">
+                                    <ul [hidden]="router.url.includes('/checkout')|| router.url.includes('/precheck')    ">
                                         <li><a routerLink="">Home</a>
                                         </li>
                                        <li><a >About</a>
@@ -78,7 +78,7 @@
                 <div class="offcanvas-wrapper">
                     <div class="offcanvas-inner-content">                 
                          <nav class="offcanvas-navigation">
-                            <ul [hidden]="router.url.includes('/checkout') ">
+                            <ul [hidden]="router.url.includes('/checkout') || router.url.includes('/precheck')  ">
                                 <li class="menu-item-has-children">
                                     <a routerLink="">Home</a>
                                 </li>
@@ -107,7 +107,7 @@
                                     <a routerLink="contact">Contact</a>
                                 </li>
                             </ul>
- <ul [hidden]="!router.url.includes('/checkout') ">
+ <ul [hidden]="!router.url.includes('/checkout') || !router.url.includes('/precheck')    ">
                                 <li class="menu-item-has-children">
                                     <a href="#">Cancel</a>
                                 </li>
