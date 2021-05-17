@@ -35,7 +35,20 @@ constructor(
 	succeeded:boolean=false;
   	public selDate = { date:1, month:1, year:1 };
   	ngFormAddOrder: FormGroup;
-  	submitted = false;
+  	submitted = false;  
+  	public order : OrderInterface ={
+    serviceType:"",
+    address:"",
+    subject:"",
+    subjectA2U:"",
+    email:"",
+    clientEmail:"",
+    quoteId:"",
+    quoteIdPre:1,
+    daysPerMonth:1,
+    hoursPerDay:1,
+    ncleaners:1
+  };
 
   ngOnInit() {
   	    	 this.ngFormAddOrder = this.formBuilder.group({
