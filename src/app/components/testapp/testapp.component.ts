@@ -75,6 +75,33 @@ oncart(index){
   this.tixs[id].oncart=true;
   // console.log("en el carrito");
 }
+setBasic(){
+      this._uw.order.serviceType="Houses";
+        this._uw.order.subService="Basic";
+        this._uw.order.houseSize="Basic";
+        this._uw.order.amount=99.99;
+        console.log("dato" +this._uw.order.serviceType);
+    this.router.navigate(['/precheck']);
+  // console.log("en el carrito");
+}
+setMedium(){
+      this._uw.order.serviceType="Houses";
+        this._uw.order.subService="Medium";
+        this._uw.order.houseSize="Medium";
+        this._uw.order.amount=149.99;
+        console.log("dato" +this._uw.order.serviceType);
+    this.router.navigate(['/precheck']);
+  // console.log("en el carrito");
+}
+setPremium(){
+      this._uw.order.serviceType="Houses";
+        this._uw.order.subService="Premium";
+        this._uw.order.houseSize="Premium";
+        this._uw.order.amount=199.99;
+        console.log("dato" +this._uw.order.serviceType);
+    this.router.navigate(['/precheck']);
+  // console.log("en el carrito");
+}
 outcart(index){
 
     let id=index;

@@ -1,0 +1,93 @@
+
+<section class="booking-section">
+    <div class="outer-container clearfix">
+     
+        <div class="single-column" >
+            <div class="content_block_6">
+              <div class="content-box">
+                    <div class="bg-layer" ></div>
+                    <div class="sec-title text-left"  [hidden]="submitted">
+                        <h6>Get a Appointmen for {{this._uw.order.serviceType}} cleaning service ({{this._uw.order.subService}})</h6>
+                        <h2>Please, complete the form</h2>
+                         
+                    </div>
+                    <!--  <div class="sec-title text-left" [hidden]="!submitted">
+                        <h6>Your Quote Estimation Amount is:</h6>
+                        <h2> {{_uw.order.amount }} $CAD + HST  </h2>
+
+                    </div> -->
+                    <form  [formGroup]="ngFormAddOrder" (ngSubmit) ="okOrder()"  class="estimate-form">
+                        <div class="inner-box">
+                            <div class="form-group pos_rel">
+                                <input type="text" id="name" name="name" placeholder="Your Name" [(ngModel)]="order.name"  formControlName="name"
+                              [ngClass]="{ 'is-invalid': submitted && fval2.name.errors }"
+                              class="form-control"
+                              required>
+                                <i class="uil uil-envelope lgn_icon"></i>
+                                <span class="required"></span>
+                                <div *ngIf="submitted && fval2.name.errors" class="invalid-feedback">
+                                    <div *ngIf="fval2.name.errors.required" class="errorLabel">
+                                 
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group pos_rel">
+                                <input type="email" id="email"  name="email" placeholder="Your Email" [(ngModel)]="order.email"  formControlName="email"
+                              [ngClass]="{ 'is-invalid': submitted && fval2.email.errors }"
+                              class="form-control"
+                              required>
+                            <i class="uil uil-envelope lgn_icon"></i>
+                              <span class="required"></span>
+                              <div *ngIf="submitted && fval2.email.errors" class="invalid-feedback">
+                                  <div *ngIf="fval2.email.errors.required" class="errorLabel">
+                                  
+                                  </div>
+                              </div>
+                            </div>
+                            <div class="form-group pos_rel">
+                                <input type="text" name="phone" id="phone"  placeholder="Your Phone" [(ngModel)]="order.phone"  formControlName="phone" class="form-control" 
+                              [ngClass]="{ 'is-invalid': submitted && fval2.phone.errors }"
+                              required>
+                              <i class="uil uil-envelope lgn_icon"></i>
+                                <span class="required"></span>
+                                <div *ngIf="submitted && fval2.phone.errors" class="invalid-feedback">
+                                    <div *ngIf="fval2.phone.errors.required" class="errorLabel">                                 
+                                    </div>
+                                </div>
+                            </div>
+                         
+
+                            <div class="form-group pos_rel">
+                                <input type="text" id="address" name="address" placeholder="Your Address" [(ngModel)]="order.address"  formControlName="address"
+                              [ngClass]="{ 'is-invalid': submitted && fval2.address.errors }" class="form-control"
+                              required>
+                              <i class="uil uil-envelope lgn_icon"></i>
+                                <span class="required"></span>
+                                <div *ngIf="submitted && fval2.address.errors" class="invalid-feedback">
+                                    <div *ngIf="fval2.address.errors.required" class="errorLabel">
+                                    </div>
+                                </div>
+                            </div>
+                             
+                            
+
+                          
+                              <div class="message-btn" >
+                                <button type="submit" (click)="go()">Continue
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
