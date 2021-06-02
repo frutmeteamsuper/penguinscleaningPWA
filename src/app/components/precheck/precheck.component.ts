@@ -92,7 +92,7 @@ go(){
           this._uw.order.quoteId=this.order.quoteId;
           this._uw.order.adminName="Jessica",
           this._uw.order.clientEmail=this._uw.order.email,
-          this._uw.order.email="frutmeteam@protonmail.com",
+          this._uw.order.email="penguinscleaningservice@gmail.com",
           this._uw.order.subtotal=this._uw.order.amount;
           this._uw.order.amount=this._uw.order.amount+(this._uw.order.amount*12/100);
           this.router.navigate(['/checkout']);
