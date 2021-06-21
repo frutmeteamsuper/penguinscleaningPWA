@@ -217,7 +217,15 @@
                                 </h5>                                 
                             </div>
 
-
+                            <div class="field-input">
+                                <div class="custom-controls-stacked">
+                                    <label class="custom-control material-checkbox">
+                                        <input type="checkbox" class="material-control-input">
+                                        <span class="material-control-indicator" style="position: initial;"></span>
+                                        <span class="description"><a href="assets/assetspenguins/images/service/termsCond.pdf" target="_blanck" style="color: grey;">Terms and Conditions</a> </span>
+                                    </label>
+                                </div>
+                            </div>
                             <div class="message-btn" [hidden]="quoteSubmitted && !_uw.errorFormSendOrder || houseSelected " >
                                 <button type="submit" (click)="setQuote()">Get a quote</button>
                             </div>
