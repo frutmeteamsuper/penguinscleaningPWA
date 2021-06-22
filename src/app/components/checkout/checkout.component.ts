@@ -102,7 +102,8 @@ constructor(
 	) {}
 	async onClick(){
 		let response:any;
-		this._uw.order.date=this.selDate.date+" /"+(this.selDate.month+1)+" /"+this.selDate.year;
+		this._uw.order.date=this.selDate.year+"-"+(this.selDate.month+1)+"-"+this.selDate.date;
+		// this._uw.order.date=this.selDate.date+" /"+(this.selDate.month+1)+" /"+this.selDate.year;
 		this._uw.order.serviceDescription= this._uw.order.serviceType+" cleaning "+"("+this._uw.order.houseSize+")";
  		const {token, error} = await stripe.createToken(this.card);
  		if (token){
