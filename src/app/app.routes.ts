@@ -20,12 +20,15 @@ import {
 	TopbarComponent,
 	PagoComponent,
 	ProjectsComponent,
+	PrjtsComponent,
 	ProjectoneComponent,
 	ProjecttwoComponent,
 	ProjectthreeComponent,
 	ProjectfourComponent,
 	GalleryComponent,
 	PrecheckComponent,
+		ProjectdetailComponent,
+
 	CheckoutComponent
 
 	}from "./components/index.paginas";
@@ -43,7 +46,9 @@ const app_routes: Routes = [
 	{path:'office',component:OfficeComponent},
 	{path:'events',component:EventsComponent},
 	{path:'quote',component:QuoteComponent},
+		{path:'projectdetail/:id',component:ProjectdetailComponent},
 	{path:'projects',component:ProjectsComponent},
+	{path:'prjts',component:PrjtsComponent},
 	{path:'projectone',component:ProjectoneComponent},
 	{path:'projecttwo',component:ProjecttwoComponent},
 	{path:'projectthree',component:ProjectthreeComponent},

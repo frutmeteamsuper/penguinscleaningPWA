@@ -14,6 +14,9 @@ export { CarpetComponent } from "./carpet/carpet.component";
 export { CovidComponent } from "./covid/covid.component";
 export { QuoteComponent } from "./quote/quote.component";
 export { ProjectsComponent } from "./projects/projects.component";
+export { PrjtsComponent } from "./prjts/prjts.component";
+export { ProjectdetailComponent } from "./projectdetail/projectdetail.component";
+
 export { ProjectoneComponent } from "./projectone/projectone.component";
 export { ProjecttwoComponent } from "./projecttwo/projecttwo.component";
 export { ProjectthreeComponent } from "./projectthree/projectthree.component";

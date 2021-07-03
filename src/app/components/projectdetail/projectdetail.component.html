@@ -1,0 +1,95 @@
+        <!-- project-details -->
+         <section class="project-details">
+            <div class="auto-container">
+                <div class="project-details-content">
+                    <div class="two-column">
+                        <div class="row clearfix" *ngIf="tix !== undefined ">
+                            <div class="col-lg-6 col-md-12 col-sm-12 image-column">
+                                <figure class="image-box"><img src="{{tix.images[0]}}" alt=""></figure>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-sm-12 inner-column">
+                                <div class="content-box">
+                                    <h4>{{tix.tittle}}</h4>
+                                    <div class="inner-box clearfix">
+                                        <div class="left-column">
+                                            
+                                            <div class="single-box">
+                                                <h6>Category:</h6>
+                                                <p>{{tix.category}}</p>
+                                            </div>
+                                            <div class="single-box">
+                                                <h6>Rating:</h6>
+                                                <ul class="rating">
+                                                   <li><i class="fas fa-star"></i></li> 
+                                                   <li><i class="fas fa-star"></i></li> 
+                                                   <li><i class="fas fa-star"></i></li> 
+                                                   <li><i class="fas fa-star"></i></li> 
+                                                   <li><i class="fas fa-star"></i></li> 
+                                                </ul>
+                                            </div>
+                                        </div>
+                                      
+                                    </div>
+                                </div>
+                                <figure class="image-box"><img src="{{tix.images[1]}}" alt=""></figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- project-details end -->
+        
+
+        <!-- shop-details -->
+        <section class="shop-details" style="background: #eceff6;">
+            <div class="auto-container">
+                <div class="sec-title text-center" *ngIf="tix !== undefined ">
+                    <h6>{{tix.category}}</h6>
+                    <h2>{{tix.tittle}}</h2>
+                </div>
+                <div class="product-details-content">
+                    <div class="row clearfix">
+                        <div class="col-lg-6 col-md-12 col-sm-12 image-column" *ngIf="tix !== undefined ">
+                          <div class="slider-inner">
+                                <div class="bxslider">
+                                    <div class="slider-content" *ngFor="let item of tix.images; let i=index;" >
+                                        <div class="slider-pager"   *ngIf="i==0">
+                                            <ul class="thumb-box" >
+                                                <li *ngFor="let item of tix.images; let i=index;"  [hidden]="i>1">
+                                                    <a class="active" data-slide-index="0"href="{{item}}" data-fancybox="gallery" ><figure><img src="{{item}}" alt=""></figure></a>
+                                                </li>
+                                               <!--  <li>
+                                                    <a data-slide-index="1" href="shop-details.html#"><figure><img src="assets/images/resource/shop/shop-single-1.jpg" alt=""></figure></a>
+                                                </li>
+                                                <li>
+                                                    <a data-slide-index="2" href="shop-details.html#"><figure><img src="assets/images/resource/shop/shop-single-1.jpg" alt=""></figure></a>
+                                                </li> -->
+                                            </ul>
+                                        </div>
+                                        <div class="product-image" [hidden]="i>0">
+                                            <figure class="image">
+                                                <a href="{{item}}" class="lightbox-image" data-fancybox="gallery"><img src="{{item}}" alt=""></a>
+                                            </figure>
+                                        </div>
+                                    </div>
+                                 </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12 col-sm-12 content-column" *ngIf="tix !== undefined ">
+                            <div class="product-details">
+                                
+                                 <div class="text" align="justify">
+                                    <p>{{tix.description}}</p>
+                                </div>
+                            </div>
+                           <!--  <div class="btn-box" align="center">
+                                <a routerLink="../projecttwo" class="theme-btn-four thm-btn">Nex</a>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+        </section>
+        <!-- shop-details end -->

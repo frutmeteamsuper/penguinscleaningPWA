@@ -45,6 +45,22 @@ export class DataApiService {
 		}).toPromise();
 
 	}
+	getTixById(id:string){
+		//console.log(id);
+		let indice = id;
+		const url_api=`https://db.penguinscleaning.ca:3022/api/tixes/${indice}`;
+		this.tix = this.http.get(url_api);
+	
+		return (this.tix);
+	}
+	getAllTixs(){
+		const url_api = 'https://db.penguinscleaning.ca:3022/api/tixes?filter[where][status]=activated';
+		return this.http.get(url_api);
+	}
+	getAllTixsReturn(){
+		const url_api = 'https://db.penguinscleaning.ca:3022/api/tixes?filter[where][status]=activated';
+		return (this.tixs = this.http.get(url_api));
+	}
 	sendMailNewQuoteAA(order){
 		const url_api='https://email.penguinscleaning.ca:3005/newQuoteAA';
 		return this.http
@@ -75,10 +91,7 @@ export class DataApiService {
 		.post(url_api, order)
 		.pipe(map(data => data));
 	}
-	getAllTixs(){
-		const url_api = 'https://db.penguinscleaning.ca:3022/api/tixes?filter[where][status]=activated';
-		return this.http.get(url_api);
-	}
+
  	getTamano(){
 		const url_api = 'https://db.penguinscleaning.ca:3022/api/tixes?filter[where][status]=activated';
 		return (this.tixs = this.http.get(url_api));

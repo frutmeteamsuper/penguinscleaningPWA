@@ -32,6 +32,7 @@ export interface TixInterface{
 	quantity?:number;
 	sin?:Array<number>;
 	status?:string;
+	tittle?:string;
 	tallas?:Array<string>;
 	temp?:string;
 	tips?:string;

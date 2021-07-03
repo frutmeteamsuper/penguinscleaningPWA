@@ -72,6 +72,8 @@ import { ProjectfourComponent } from './components/projectfour/projectfour.compo
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { PrecheckComponent } from './components/precheck/precheck.component';
+import { ProjectdetailComponent } from './components/projectdetail/projectdetail.component';
+import { PrjtsComponent } from './components/prjts/prjts.component';
 
 @NgModule({
   declarations: [
@@ -105,6 +107,8 @@ import { PrecheckComponent } from './components/precheck/precheck.component';
     GalleryComponent,
     CheckoutComponent,
     PrecheckComponent,
+    ProjectdetailComponent,
+    PrjtsComponent,
   ],
   imports: [
     BrowserModule,
