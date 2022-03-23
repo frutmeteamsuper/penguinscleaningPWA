@@ -510,7 +510,7 @@ img {
   font-weight: 600;
   color: #ffffff;
   text-transform: uppercase;
-  padding: 16px 54px;
+  padding: 16px 16px;
   border-radius: 5px;
   transition: all 500ms ease;
 }
@@ -2285,11 +2285,11 @@ div#mCSB_1_container{
 
 .image_block_1 .image-box .image-1{
   position: relative;
-  border-radius: 50%;
+  border-radius: 10%;
 }
 
 .image_block_1 .image-box .image-1 img{
-  border-radius: 50%;
+  border-radius: 10%;
 }
 
 .image_block_1 .image-box .image-2{
@@ -4567,6 +4567,7 @@ div#mCSB_1_container{
 .feature-section{
   position: relative;
   padding: 60px 0px 60px 0px;
+  background-color: aliceblue;
 }
 
 .feature-block-one .inner-box{
